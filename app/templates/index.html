@@ -1,0 +1,1243 @@
+<!--
+  @file templates/index.html
+  @module CineMatch_UI
+  @description Giao diện trung tâm CineMatch - The Aesthetic OS (Obsidian Cinema & Material 3 Expressive, SVG Vector Icons)
+-->
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if movie %}{{ movie.title }} · {% elif query %}{{ query }} · {% endif %}CineMatch — Hệ thống Khám phá & Gợi ý Điện ảnh</title>
+  <meta name="description" content="CineMatch - Hệ thống gợi ý phim ứng dụng AI Semantic Embeddings và thuật toán Two-Tier Hybrid Re-ranking theo thời gian thực">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=mood24">
+</head>
+<body>
+
+  <!-- ==========================================
+       SVG VECTOR ICON SYSTEM MACRO
+       Chuẩn hóa toàn bộ icon thành SVG sắc nét
+       ========================================== -->
+  {% macro render_icon(name, size=16, class_name='') %}
+    {% if name == 'film' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m3 9 2.4-4.8M9 3l1.8 6M15 3l1.8 6M21 9l-2.4-4.8"/><path d="M3 9h18"/></svg>
+    {% elif name == 'sparkle' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+    {% elif name == 'star' %}
+      <svg class="cm-icon cm-icon--gold {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    {% elif name == 'settings' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+    {% elif name == 'search' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>
+    {% elif name == 'info' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="16" y2="12"/><line x1="12" x2="12.01" y1="8" y2="8"/></svg>
+    {% elif name == 'lightbulb' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-1 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+    {% elif name == 'warning' %}
+      <svg class="cm-icon cm-icon--stroke cm-icon--warning {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+    {% elif name == 'calendar' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+    {% elif name == 'clock' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    {% elif name == 'flame' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+    {% elif name == 'award' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+    {% elif name == 'chevron-down' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+    {% elif name == 'arrow-right' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    {% elif name == 'arrow-left' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><line x1="19" x2="5" y1="12" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    {% elif name == 'arrow-up-right' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    {% elif name == 'close' or name == 'x' %}
+      <svg class="cm-icon cm-icon--stroke {{ class_name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" aria-hidden="true"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+    {% endif %}
+  {% endmacro %}
+
+  <!-- ==========================================
+       TOP LANDING PAGE NAVIGATION BAR (.cm-header)
+       Thiết kế dạng Floating Island Pill Bar: Sang trọng, Sạch sẽ, Tinh tế
+       ========================================== -->
+  <header class="cm-header">
+    <div class="cm-header__inner">
+      <!-- 1. Brand Identity -->
+      <a class="cm-header__brand" href="{{ url_for('home') }}" aria-label="CineMatch Trang chủ" data-nav-target="home">
+        <div class="cm-header__logo">
+          {{ render_icon('sparkle', 18) }}
+        </div>
+        <span class="cm-header__brand-name">CineMatch</span>
+        <span class="cm-header__badge">AI Cinema</span>
+      </a>
+
+      <!-- 2. Landing Page Navigation Menu (Floating Tonal Pill) -->
+      <nav class="cm-header__nav" id="cm-main-nav" aria-label="Điều hướng chính">
+        <a href="{{ url_for('home') }}" class="cm-header__nav-link" data-nav="home">
+          <span>Khám phá</span>
+        </a>
+        <a href="{{ url_for('home') }}#trending" class="cm-header__nav-link" data-nav="trending">
+          {{ render_icon('flame', 13, 'cm-icon--brand') }}
+          <span>Thịnh hành</span>
+        </a>
+        <a href="{{ url_for('home') }}#top-rated" class="cm-header__nav-link" data-nav="top-rated">
+          {{ render_icon('award', 13, 'cm-icon--gold') }}
+          <span>Top Đánh giá</span>
+        </a>
+        <a href="{{ url_for('home') }}#now-playing" class="cm-header__nav-link" data-nav="now-playing">
+          {{ render_icon('film', 13, 'cm-icon--accent') }}
+          <span>Đang chiếu</span>
+        </a>
+      </nav>
+
+      <!-- 3. Actions / CTAs -->
+      <div class="cm-header__actions">
+        <a href="{{ url_for('mood_journey') }}" class="cm-header__status-badge" title="Tạo Hành trình cảm xúc">
+          {{ render_icon('sparkle', 12, 'cm-icon--ai') }}
+          <span class="cm-header__status-text">Hành trình</span>
+        </a>
+        <a href="{{ url_for('admin.login') }}" class="cm-header__status-badge" title="CineMatch Studio">
+          {{ render_icon('film', 12, 'cm-icon--muted') }}
+          <span class="cm-header__status-text">Studio</span>
+        </a>
+        <button type="button" class="cm-header__status-badge" onclick="openSettingsModal()" id="btn-settings-modal" title="Cấu hình TMDB Live API">
+          <span class="cm-header__status-dot {% if has_api_key %}cm-header__status-dot--active{% endif %}"></span>
+          <span class="cm-header__status-text">{% if has_api_key %}TMDB Live{% else %}Chế độ Demo{% endif %}</span>
+          {{ render_icon('settings', 12, 'cm-icon--muted') }}
+        </button>
+        <button type="button" class="cm-header__cta-btn" onclick="focusSearchAI()" aria-label="Tìm kiếm AI">
+          <svg class="cm-header__cta-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/>
+          </svg>
+          <span class="cm-header__cta-text">Tìm kiếm AI</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       SMART NOTICE BANNER (Khi chưa có API key)
+       ========================================== -->
+  {% if not has_api_key %}
+  <aside class="cm-banner" role="status">
+    <div class="cm-banner__content">
+      {{ render_icon('lightbulb', 18, 'cm-icon--accent') }}
+      <span>Hệ thống đang chạy trên <strong>Bộ đệm Offline Demo Fallback</strong>. Để kết nối trực tuyến hơn 800,000+ phim và lấy poster HD theo thời gian thực, vui lòng cấu hình TMDB API Key.</span>
+    </div>
+    <button type="button" class="cm-banner__btn" onclick="openSettingsModal()">
+      <span>Cấu hình API Key</span>
+      {{ render_icon('arrow-up-right', 13) }}
+    </button>
+  </aside>
+  {% endif %}
+
+  <!-- ==========================================
+       MAIN VIEW CONTAINER (.cm-main)
+       ========================================== -->
+  <main class="cm-main">
+    {% if warning %}
+    <div class="cm-alert--warning" role="alert">
+      {{ render_icon('warning', 16) }}
+      <span>{{ warning }}</span>
+    </div>
+    {% endif %}
+
+    <!-- ==========================================
+         CINEMATIC MOVIE CARD MACRO (.cm-card)
+         Tỷ lệ vàng 2:3 với Popover Progressive Disclosure
+         ========================================== -->
+    {% macro render_movie_card(item, is_recommended=false) %}
+    <article class="cm-card">
+      <div class="cm-card__inner">
+        <a href="{{ url_for('detail', movie_id=item.id, method=method) }}" class="cm-card__link">
+          <div class="cm-card__media">
+            <div class="cm-card__poster-wrap">
+              {% if item.poster_url %}
+              <img class="cm-card__poster" src="{{ item.poster_url }}" alt="{{ item.title }}" loading="lazy" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='https://wsrv.nl/?url='+encodeURIComponent(this.src);}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+              <div class="cm-card__poster-fallback cm-card__poster-fallback--hidden">
+                {{ render_icon('film', 36, 'cm-icon--muted') }}
+                <span>{{ item.title }}</span>
+              </div>
+              {% else %}
+              <div class="cm-card__poster-fallback">
+                {{ render_icon('film', 36, 'cm-icon--muted') }}
+                <span>{{ item.title }}</span>
+              </div>
+              {% endif %}
+            </div>
+
+            <!-- Badges Layer -->
+            <div class="cm-card__badges">
+              {% if item.is_custom %}
+              <div class="cm-card__badge-wrap">
+                <div class="cm-card__match-badge">
+                  {{ render_icon('sparkle', 12, 'cm-icon--ai') }}
+                  <span>{{ 'AI SHORT' if item.is_ai_generated else 'CINEMATCH' }}</span>
+                </div>
+              </div>
+              {% elif is_recommended and item.match_percentage is defined %}
+              <div class="cm-card__badge-wrap" onclick="toggleCardPopover(event, this)">
+                <div class="cm-card__match-badge cm-card__match-badge--interactive" title="Xem phân tích lý do gợi ý">
+                  {{ render_icon('sparkle', 12, 'cm-icon--ai') }}
+                  <span>{{ item.match_percentage }}% Match</span>
+                  {{ render_icon('info', 11, 'cm-card__badge-info-icon') }}
+                </div>
+
+                <!-- Interactive Explainability Popover -->
+                <div class="cm-popover" role="tooltip">
+                  <div class="cm-popover__header">
+                    <span class="cm-popover__tag">LÝ DO GỢI Ý</span>
+                    <span class="cm-popover__score">{{ item.match_percentage }}%</span>
+                  </div>
+
+                  {% if item.breakdown is defined %}
+                  <div class="cm-popover__metrics">
+                    <div class="cm-popover__metric-row">
+                      <div class="cm-popover__metric-info">
+                        <span class="cm-popover__metric-label">Cốt truyện (AI Semantic)</span>
+                        <span class="cm-popover__metric-val">{{ item.breakdown.semantic_score }}%</span>
+                      </div>
+                      <div class="cm-popover__bar">
+                        <div class="cm-popover__bar-fill" data-progress="{{ item.breakdown.semantic_score }}"></div>
+                      </div>
+                    </div>
+
+                    <div class="cm-popover__metric-row">
+                      <div class="cm-popover__metric-info">
+                        <span class="cm-popover__metric-label">Thể loại & Phong cách</span>
+                        <span class="cm-popover__metric-val">{{ item.breakdown.genre_score }}%</span>
+                      </div>
+                      <div class="cm-popover__bar">
+                        <div class="cm-popover__bar-fill" data-progress="{{ item.breakdown.genre_score }}"></div>
+                      </div>
+                    </div>
+
+                    <div class="cm-popover__metric-row">
+                      <div class="cm-popover__metric-info">
+                        <span class="cm-popover__metric-label">Chất lượng (Bayesian IMDb)</span>
+                        <span class="cm-popover__metric-val">{{ item.breakdown.quality_score }}/10</span>
+                      </div>
+                      <div class="cm-popover__bar">
+                        <div class="cm-popover__bar-fill cm-popover__bar-fill--gold" data-progress="{{ (item.breakdown.quality_score * 10)|int }}"></div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  <p class="cm-popover__reason">{{ item.reason or 'Phù hợp với sở thích điện ảnh của bạn.' }}</p>
+                </div>
+              </div>
+              {% elif item.ai_score is defined and item.ai_score > 0 %}
+              <div class="cm-card__badge-wrap">
+                <div class="cm-card__match-badge">
+                  {{ render_icon('sparkle', 12, 'cm-icon--ai') }}
+                  <span>{{ (item.ai_score * 100)|round|int }}%</span>
+                </div>
+              </div>
+              {% else %}
+              <div></div>
+              {% endif %}
+
+              <div class="cm-card__rating-badge">
+                {{ render_icon('star', 12, 'cm-icon--gold') }}
+                <span>{{ '%.1f'|format(item.vote_average) }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Meta Body -->
+          <div class="cm-card__body">
+            <div class="cm-card__meta">
+              <span>{{ item.year or 'N/A' }}</span>
+              <span>{% if item.runtime %}{{ item.runtime }} phút{% else %}{{ item.vote_count }} votes{% endif %}</span>
+            </div>
+            <h3 class="cm-card__title" title="{{ item.title }}">{{ item.title }}</h3>
+            <div class="cm-card__genres">{{ item.genres|join(' · ') or 'Điện ảnh' }}</div>
+            {% if is_recommended %}
+            <div class="cm-card__detail-hint">Bấm vào thẻ để xem diễn viên và nguồn xem</div>
+            {% endif %}
+
+            <!-- Material 3 Integrated Card Action (Invisible Interface at Card Footer) -->
+            <button
+              type="button"
+              class="cm-card__action"
+              onclick="seedMovie(event, '{{ item.id }}')"
+              title="Khám phá các phim tương tự tác phẩm này"
+            >
+              {{ render_icon('sparkle', 12) }}
+              <span>Khám phá tương tự</span>
+            </button>
+          </div>
+        </a>
+      </div>
+    </article>
+    {% endmacro %}
+
+    <!-- ==========================================
+         ROUTE 1: ERROR VIEW
+         ========================================== -->
+    {% if error %}
+    <section class="cm-error-view">
+      <h1 class="cm-error-view__title">{{ error }}</h1>
+      <p class="cm-error-view__desc">Trang bạn tìm kiếm không tồn tại hoặc dữ liệu tạm thời chưa sẵn sàng.</p>
+      <a class="cm-omnibar__submit-btn cm-error-view__btn" href="{{ url_for('home') }}">
+        {{ render_icon('arrow-left', 14) }}
+        <span>Về trang chủ CineMatch</span>
+      </a>
+    </section>
+
+    <!-- ==========================================
+         ROUTE 2: IMMERSIVE CINEMA STAGE (CHI TIẾT PHIM)
+         ========================================== -->
+    {% elif movie %}
+    <div class="cm-stage-back">
+      <a href="{{ url_for('home') }}" class="cm-stage-back__link">
+        {{ render_icon('arrow-left', 14) }}
+        <span>Quay lại Khám phá</span>
+      </a>
+    </div>
+
+    <!-- Immersive Stage Banner -->
+    <section class="cm-stage">
+      <div class="cm-stage__backdrop">
+        {% if movie.backdrop_url %}
+        <img class="cm-stage__backdrop-img" src="{{ movie.backdrop_url }}" alt="{{ movie.title }}" onerror="this.style.display='none';">
+        {% endif %}
+        <div class="cm-stage__scrim"></div>
+      </div>
+
+      <div class="cm-stage__content">
+        <div class="cm-stage__poster">
+          {% if movie.poster_url %}
+          <img src="{{ movie.poster_url }}" alt="{{ movie.title }}" onerror="if(!this.dataset.tried){this.dataset.tried='1';this.src='https://wsrv.nl/?url='+encodeURIComponent(this.src);}else{this.style.display='none';}">
+          {% else %}
+          <div class="cm-card__poster-fallback">
+            {{ render_icon('film', 48, 'cm-icon--muted') }}
+            <span>{{ movie.title }}</span>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="cm-stage__info">
+          <h1 class="cm-stage__title">{{ movie.title }}</h1>
+          {% if movie.tagline %}<p class="cm-stage__tagline">“{{ movie.tagline }}”</p>{% endif %}
+
+          <div class="cm-stage__pills">
+            <span class="cm-pill">
+              {{ render_icon('calendar', 13) }}
+              <span>{{ movie.year or 'N/A' }}</span>
+            </span>
+            <span class="cm-pill">
+              {{ render_icon('clock', 13) }}
+              <span>{{ movie.runtime or '—' }} phút</span>
+            </span>
+            <span class="cm-pill cm-pill--gold">
+              {{ render_icon('star', 13, 'cm-icon--gold') }}
+              <span>{{ '%.1f'|format(movie.vote_average) }}/10 ({{ movie.vote_count }} lượt đánh giá)</span>
+            </span>
+            {% for g in movie.genres %}
+            <a href="{{ url_for('home', genre=g) }}" class="cm-pill cm-pill--accent" title="Xem thêm phim thuộc thể loại {{ g }}">{{ g }}</a>
+            {% endfor %}
+          </div>
+
+          <p class="cm-stage__overview">{{ movie.overview or 'Chưa có mô tả nội dung cho tác phẩm này.' }}</p>
+
+          <dl class="cm-stage__credits">
+            <dt>Đạo diễn:</dt>
+            <dd>{{ movie.director or 'Chưa có thông tin' }}</dd>
+            <dt>Diễn viên chính:</dt>
+            <dd>
+              {% if movie.cast %}
+              <div class="cm-cast-list">{% for actor in movie.cast %}<span class="cm-cast-chip">{{ actor }}</span>{% endfor %}</div>
+              {% else %}Chưa có thông tin{% endif %}
+            </dd>
+            {% if movie.ai_tool %}
+            <dt>Công cụ AI:</dt>
+            <dd>{{ movie.ai_tool }}</dd>
+            {% endif %}
+            {% if movie.topics %}
+            <dt>Chủ đề nổi bật:</dt>
+            <dd>{{ movie.topics|join(', ') }}</dd>
+            {% endif %}
+          </dl>
+
+          {% if movie.sources or movie.watch_providers or movie.trailer_url %}
+          <section class="cm-watch-panel" aria-label="Nguồn và nơi xem phim">
+            <div class="cm-watch-panel__header">
+              <div>
+                <span class="cm-watch-panel__eyebrow">NGUỒN & NƠI XEM</span>
+                <h2>Xem tác phẩm ở đâu?</h2>
+              </div>
+              {% if movie.watch_region %}<span class="cm-watch-panel__region">Khu vực {{ movie.watch_region }}</span>{% endif %}
+            </div>
+
+            {% if movie.watch_providers %}
+            <div class="cm-provider-list">
+              {% for provider in movie.watch_providers %}
+              <a class="cm-provider" href="{{ provider.url }}" target="_blank" rel="noopener noreferrer">
+                {% if provider.logo_url %}<img src="{{ provider.logo_url }}" alt="" loading="lazy">{% endif %}
+                <span><strong>{{ provider.name }}</strong><small>{{ provider.type }}</small></span>
+                {{ render_icon('arrow-up-right', 13) }}
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="cm-source-links">
+              {% if movie.trailer_url %}
+              <a class="cm-source-link cm-source-link--primary" href="{{ movie.trailer_url }}" target="_blank" rel="noopener noreferrer">{{ render_icon('film', 14) }} <span>Xem trailer / phim</span> {{ render_icon('arrow-up-right', 12) }}</a>
+              {% endif %}
+              {% for source in movie.sources %}
+                {% if source.url != movie.trailer_url %}
+                <a class="cm-source-link" href="{{ source.url }}" target="_blank" rel="noopener noreferrer"><span>{{ source.label }}</span> {{ render_icon('arrow-up-right', 12) }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <p class="cm-watch-panel__note">Nguồn xem được tổng hợp từ thông tin của tác phẩm và TMDB. Khả dụng có thể thay đổi theo khu vực.</p>
+          </section>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommendations for this Movie -->
+    <section class="cm-section">
+      <div class="cm-section__header">
+        <div>
+          <div class="cm-hero__eyebrow">
+            {{ render_icon('sparkle', 12, 'cm-icon--accent') }}
+            <span>TWO-TIER HYBRID RECOMMENDER</span>
+          </div>
+          <h2 class="cm-section__title">Nếu bạn thích {{ movie.title }}, CineMatch đề xuất:</h2>
+          <p class="cm-section__subtitle">Được xếp hạng tự động qua thuật toán kết hợp AI Semantic Embedding, Phân tầng Thể loại và Điểm Bayesian IMDb.</p>
+        </div>
+
+        <!-- Algorithm Segmented Control -->
+        <div class="cm-segmented-control" role="group" aria-label="Lựa chọn thuật toán">
+          <a href="{{ url_for('detail', movie_id=movie.id, method='hybrid') }}" class="cm-segmented-control__item {% if method == 'hybrid' %}cm-segmented-control__item--active{% endif %}">
+            {{ render_icon('sparkle', 12) }}
+            <span>Hybrid (Khuyên dùng)</span>
+          </a>
+          <a href="{{ url_for('detail', movie_id=movie.id, method='ai') }}" class="cm-segmented-control__item {% if method == 'ai' %}cm-segmented-control__item--active{% endif %}">
+            AI Semantic
+          </a>
+          <a href="{{ url_for('detail', movie_id=movie.id, method='tfidf') }}" class="cm-segmented-control__item {% if method == 'tfidf' %}cm-segmented-control__item--active{% endif %}">
+            TF-IDF
+          </a>
+        </div>
+      </div>
+
+      <!-- AI Cinema Insight Box -->
+      <div class="cm-insight">
+        <div class="cm-insight__header">
+          <div class="cm-insight__title">
+            {{ render_icon('sparkle', 14) }}
+            <span>AI CINEMA INSIGHT</span>
+          </div>
+          <span class="cm-insight__badge">Two-Tier Hybrid Re-ranker</span>
+        </div>
+        <p class="cm-insight__text">
+          Dựa trên phân tích sâu tác phẩm <strong>{{ movie.title }}</strong> ({% if movie.genres %}{{ movie.genres|join(', ') }}{% endif %} · Đạo diễn: {{ movie.director or 'TMDB' }}), hệ thống trích xuất vector nội dung cốt truyện và phong cách đạo diễn để đề xuất danh sách các tác phẩm có độ tương thích cao nhất.
+        </p>
+        <div class="cm-insight__entities">
+          <span class="cm-insight__entity-tag">Thực thể phân tích:</span>
+          <span class="cm-insight__pill">{{ render_icon('sparkle', 12, 'cm-icon--ai') }} Chế độ {{ method|upper }}</span>
+          <span class="cm-insight__pill">{{ recommendations|length }} phim gợi ý</span>
+          {% for g in movie.genres[:3] %}
+          <span class="cm-insight__pill">{{ g }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="cm-grid">
+        {% for item in recommendations %}
+          {{ render_movie_card(item, true) }}
+        {% else %}
+          <div class="cm-empty-notice">
+            <p class="cm-empty-notice__text">Chưa tìm thấy phim tương tự đáp ứng tiêu chí lúc này.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- ==========================================
+         ROUTE 3: HOME & EXPLORER VIEW
+         ========================================== -->
+    {% else %}
+    <section class="cm-hero {% if query or selected_genres or selected_topics or selected_mood %}cm-hero--condensed{% endif %}">
+      {% if not query and not selected_genres and not selected_topics and not selected_mood %}
+      <div class="cm-hero__eyebrow">
+        {{ render_icon('sparkle', 13, 'cm-icon--accent') }}
+        <span>THE AESTHETIC OS CINEMA</span>
+      </div>
+      <h1 class="cm-hero__title">
+        Khám phá Điện ảnh<br>theo chiều sâu <em>Ngữ nghĩa & Trí tuệ.</em>
+      </h1>
+      <p class="cm-hero__desc">
+        Hệ thống tìm kiếm thông minh kết hợp dữ liệu điện ảnh TMDB trực tuyến và mô hình ngôn ngữ Sentence Transformers giải thích lý do gợi ý minh bạch.
+      </p>
+      {% endif %}
+
+      <!-- SMART OMNIBAR FORM (.cm-omnibar) -->
+      <form class="cm-omnibar" action="{{ url_for('home') }}" method="get" id="search-form">
+        <input type="hidden" name="mode" id="search-mode-input" value="{{ mode }}">
+        <input type="hidden" name="mood" id="mood-input" value="{{ selected_mood or '' }}">
+
+        <!-- Mode Selector Tabs -->
+        <div class="cm-omnibar__mode-tabs">
+          <button type="button" data-search-mode="title" class="cm-omnibar__tab-btn {% if mode == 'title' %}cm-omnibar__tab-btn--active{% endif %}" onclick="setSearchMode('title')">
+            {{ render_icon('film', 14) }}
+            <span>Theo Tên Phim / Đạo diễn / Diễn viên</span>
+          </button>
+          <button type="button" data-search-mode="ai" class="cm-omnibar__tab-btn {% if mode == 'ai' %}cm-omnibar__tab-btn--active{% endif %}" onclick="setSearchMode('ai')">
+            {{ render_icon('sparkle', 14, 'cm-icon--ai') }}
+            <span>AI — Mô tả Ngữ nghĩa (Tiếng Việt / Anh)</span>
+          </button>
+          <button type="button" data-search-mode="mood" class="cm-omnibar__tab-btn {% if mode == 'mood' %}cm-omnibar__tab-btn--active{% endif %}" onclick="setSearchMode('mood')">
+            <span aria-hidden="true">✨</span>
+            <span>Theo Tâm trạng Hiện tại</span>
+          </button>
+        </div>
+
+        <div class="cm-mood-picker" id="mood-picker" {% if mode != 'mood' %}hidden{% endif %}>
+          <div class="cm-mood-picker__intro">
+            <strong>Bạn đang cảm thấy thế nào?</strong>
+            <span>Chọn cảm xúc gần nhất, CineMatch sẽ tìm loại phim phù hợp để đồng hành cùng bạn.</span>
+          </div>
+          <div class="cm-mood-grid" role="group" aria-label="Chọn tâm trạng hiện tại">
+            {% for mood in moods %}
+            <button
+              type="button"
+              class="cm-mood-card {% if selected_mood == mood.key %}cm-mood-card--active{% endif %}"
+              data-mood="{{ mood.key }}"
+              aria-pressed="{{ 'true' if selected_mood == mood.key else 'false' }}"
+              onclick="selectMood('{{ mood.key }}', this)"
+              title="{{ mood.description }}"
+            >
+              <span class="cm-mood-card__emoji" aria-hidden="true">{{ mood.emoji }}</span>
+              <span><strong>{{ mood.label }}</strong><small>{{ mood.description }}</small></span>
+            </button>
+            {% endfor %}
+          </div>
+          <a class="cm-mood-journey-link" href="{{ url_for('mood_journey') }}">
+            <span>✦</span>
+            <span><strong>Muốn thay đổi cảm xúc sau khi xem?</strong><small>Để CineMatch thiết kế một Hành trình cảm xúc riêng cho bạn.</small></span>
+            <b>Khám phá →</b>
+          </a>
+        </div>
+
+        <!-- Search Input Row -->
+        <div class="cm-omnibar__row">
+          <div class="cm-omnibar__input-wrap">
+            <span class="cm-omnibar__input-icon">
+              {{ render_icon('search', 18) }}
+            </span>
+            <input
+              id="q"
+              name="q"
+              type="search"
+              class="cm-omnibar__input"
+              value="{{ query }}"
+              maxlength="200"
+              placeholder="{% if mode == 'mood' %}Có thể mô tả thêm: “tôi muốn phim nhẹ nhàng, kết thúc có hậu”…{% elif mode == 'ai' %}Nhập mô tả cốt truyện: ví dụ 'phim về du hành không gian và lỗ sâu vũ trụ', 'hoạt hình về đồ chơi'…{% else %}Nhập tên phim, đạo diễn, diễn viên: ví dụ 'phim của Trấn Thành đạo diễn', 'Interstellar', 'Christopher Nolan'…{% endif %}"
+              autocomplete="off"
+            >
+          </div>
+          <button type="submit" class="cm-omnibar__submit-btn" id="btn-submit-search">
+            {{ render_icon('sparkle', 15) }}
+            <span>{{ 'Tìm phim hợp tâm trạng' if mode == 'mood' else 'Tìm kiếm & Gợi ý' }}</span>
+          </button>
+        </div>
+
+        <!-- Meta Controls Row -->
+        <div class="cm-omnibar__meta-row">
+          <div class="cm-omnibar__selects">
+            <select name="method" class="cm-select" aria-label="Phương pháp gợi ý">
+              <option value="hybrid" {% if method == 'hybrid' %}selected{% endif %}>Chế độ Hybrid (Khuyên dùng)</option>
+              <option value="ai" {% if method == 'ai' %}selected{% endif %}>AI Semantic Embeddings</option>
+              <option value="tfidf" {% if method == 'tfidf' %}selected{% endif %}>TF-IDF Truyền thống</option>
+            </select>
+
+            {% if mode == 'title' %}
+            <select name="sort" class="cm-select" aria-label="Sắp xếp kết quả">
+              <option value="popular" {% if sort == 'popular' %}selected{% endif %}>Phổ biến nhất</option>
+              <option value="rating" {% if sort == 'rating' %}selected{% endif %}>Điểm cao nhất</option>
+              <option value="year" {% if sort == 'year' %}selected{% endif %}>Năm mới nhất</option>
+            </select>
+            {% endif %}
+          </div>
+
+          <div class="cm-omnibar__actions">
+            <!-- Shelf Collapse Toggle Button -->
+            {% set active_filters_count = (selected_genres|length) + (selected_topics|length) %}
+            <button
+              type="button"
+              class="cm-shelf-toggle {% if active_filters_count > 0 %}cm-shelf-toggle--active{% endif %}"
+              id="shelf-toggle-btn"
+              onclick="toggleFilterShelf()"
+              aria-expanded="{% if active_filters_count > 0 %}true{% else %}false{% endif %}"
+            >
+              <span>Bộ lọc Nâng cao</span>
+              {% if active_filters_count > 0 %}
+              <span class="cm-shelf-toggle__count">{{ active_filters_count }}</span>
+              {% endif %}
+              <span class="cm-shelf-toggle__arrow">
+                {{ render_icon('chevron-down', 12) }}
+              </span>
+            </button>
+
+            {% if query or selected_genres or selected_topics or selected_mood %}
+            <a href="{{ url_for('home') }}" class="cm-clear-all-link" style="display: inline-flex; align-items: center; gap: 4px;">
+              {{ render_icon('close', 12) }}
+              <span>Xóa bộ lọc</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- COLLAPSIBLE FILTER SHELF (.cm-shelf) -->
+        <div class="cm-shelf {% if active_filters_count > 0 %}cm-shelf--expanded{% endif %}" id="filter-shelf">
+          <!-- Shelf Group 1: Thể loại -->
+          <div class="cm-shelf__group">
+            <div class="cm-shelf__group-header">
+              <span class="cm-shelf__group-title">Lọc theo Thể loại:</span>
+              <button type="button" class="cm-shelf__clear-btn" onclick="clearGenreFilters()">Bỏ chọn thể loại</button>
+            </div>
+            <div class="cm-chips-wrap">
+              {% for g in genres %}
+              <label class="cm-chip">
+                <input type="checkbox" name="genre" value="{{ g }}" {% if g in selected_genres %}checked{% endif %}>
+                <span>{{ g }}</span>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Shelf Group 2: Chủ đề Từ khóa -->
+          <div class="cm-shelf__group">
+            <div class="cm-shelf__group-header">
+              <span class="cm-shelf__group-title">Chủ đề Từ khóa Đặc thù:</span>
+              <button type="button" class="cm-shelf__clear-btn" onclick="clearTopicFilters()">Bỏ chọn chủ đề</button>
+            </div>
+            <div class="cm-chips-wrap">
+              {% for topic_name in topics.keys() %}
+              <label class="cm-chip">
+                <input type="checkbox" name="topic" value="{{ topic_name }}" {% if topic_name in selected_topics %}checked{% endif %}>
+                <span>{{ topic_name }}</span>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- SECTION A: RECOMMENDATIONS FOR SOURCE MOVIE (Khi người dùng chọn mẫu) -->
+    {% if source and similar %}
+    <section class="cm-section" id="similar">
+      <div class="cm-section__header">
+        <div>
+          <div class="cm-hero__eyebrow">
+            {{ render_icon('sparkle', 12, 'cm-icon--accent') }}
+            <span>TWO-TIER HYBRID RECOMMENDER</span>
+          </div>
+          <h2 class="cm-section__title">Phim tương tự {{ source.title }} ({{ source.year }})</h2>
+          <p class="cm-section__subtitle">Gợi ý được tính toán theo thời gian thực trên tập ứng viên TMDB Live API.</p>
+        </div>
+        <span style="font-size: 13px; color: var(--sp-color-text-muted);">{{ similar|length }} gợi ý</span>
+      </div>
+
+      <!-- AI Cinema Insight Box for Source Recommender -->
+      <div class="cm-insight">
+        <div class="cm-insight__header">
+          <div class="cm-insight__title">
+            {{ render_icon('sparkle', 14) }}
+            <span>AI CINEMA INSIGHT</span>
+          </div>
+          <span class="cm-insight__badge">Hybrid Multi-Factor Analysis</span>
+        </div>
+        <p class="cm-insight__text">
+          Phân tích đa chiều tác phẩm <strong>{{ source.title }}</strong> ({{ source.year }}): Hệ thống kết hợp độ tương đồng ngữ nghĩa AI (60%), phân tầng thể loại TMDB (25%) và điểm chất lượng Bayesian IMDb (15%) để kiến tạo danh sách gợi ý tối ưu.
+        </p>
+        <div class="cm-insight__entities">
+          <span class="cm-insight__entity-tag">Hồ sơ nguồn:</span>
+          <span class="cm-insight__pill">{{ render_icon('star', 11, 'cm-icon--gold') }} {{ source.vote_average }}/10</span>
+          {% for g in source.genres %}
+          <span class="cm-insight__pill">{{ g }}</span>
+          {% endfor %}
+          {% if source.director %}
+          <span class="cm-insight__pill">ĐD: {{ source.director }}</span>
+          {% endif %}
+          <span class="cm-insight__pill">{{ similar|length }} tác phẩm tương đồng</span>
+        </div>
+      </div>
+
+      {% if matches|length > 1 %}
+      <form class="cm-omnibar__meta-row" style="margin-bottom: 20px; background: var(--sp-color-surface-container); padding: 12px 16px; border-radius: var(--sp-radius-md);" action="{{ url_for('home') }}#similar" method="get">
+        <input type="hidden" name="mode" value="{{ mode }}">
+        <input type="hidden" name="method" value="{{ method }}">
+        <input type="hidden" name="q" value="{{ query }}">
+        <input type="hidden" name="sort" value="{{ sort }}">
+        {% for g in selected_genres %}<input type="hidden" name="genre" value="{{ g }}">{% endfor %}
+        {% for t in selected_topics %}<input type="hidden" name="topic" value="{{ t }}">{% endfor %}
+
+        <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+          <label for="source-select" style="font-size: 12px; color: var(--sp-color-text-secondary); white-space: nowrap;">Nhiều phim khớp tên — Chọn phim làm mẫu:</label>
+          <select id="source-select" name="source" class="cm-select" style="flex: 1;" onchange="this.form.submit()">
+            {% for m in matches %}
+            <option value="{{ m.id }}" {% if m.id == source.id %}selected{% endif %}>{{ m.title }} ({{ m.year }}) · Điểm: {{ m.vote_average }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </form>
+      {% endif %}
+
+      <div class="cm-grid">
+        {% for item in similar %}
+          {{ render_movie_card(item, true) }}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- SECTION B: EXPLORER DASHBOARD (MẶC ĐỊNH TRANG CHỦ) -->
+    {% if is_explorer_view %}
+    {% if new_releases %}
+    <section class="cm-section" id="cinematch-exclusives">
+      <div class="cm-section__header">
+        <div>
+          <div class="cm-hero__eyebrow">{{ render_icon('sparkle', 12, 'cm-icon--accent') }}<span>CINEMATCH EXCLUSIVE</span></div>
+          <h2 class="cm-section__title" style="display:flex;align-items:center;gap:10px;">{{ render_icon('sparkle', 24, 'cm-icon--accent') }}<span>Phim mới & Phim ngắn AI</span></h2>
+          <p class="cm-section__subtitle">Nội dung do CineMatch tuyển chọn trước khi xuất hiện trên TMDB.</p>
+        </div>
+      </div>
+      <div class="cm-grid">{% for item in new_releases %}{{ render_movie_card(item) }}{% endfor %}</div>
+    </section>
+    {% endif %}
+    <section class="cm-section" id="trending">
+      <div class="cm-section__header">
+        <div>
+          <div class="cm-hero__eyebrow">
+            {{ render_icon('flame', 12, 'cm-icon--brand') }}
+            <span>TMDB LIVE FEED</span>
+          </div>
+          <h2 class="cm-section__title" style="display: flex; align-items: center; gap: 10px;">
+            {{ render_icon('flame', 24, 'cm-icon--brand') }}
+            <span>Thịnh Hành Hôm Nay (Trending Today)</span>
+          </h2>
+          <p class="cm-section__subtitle">Những bộ phim đang được xem và thảo luận nhiều nhất trên toàn thế giới.</p>
+        </div>
+      </div>
+      <div class="cm-grid">
+        {% for item in trending_today %}
+          {{ render_movie_card(item) }}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="cm-section" id="top-rated">
+      <div class="cm-section__header">
+        <div>
+          <div class="cm-hero__eyebrow">
+            {{ render_icon('award', 12, 'cm-icon--gold') }}
+            <span>CRITICALLY ACCLAIMED</span>
+          </div>
+          <h2 class="cm-section__title" style="display: flex; align-items: center; gap: 10px;">
+            {{ render_icon('award', 24, 'cm-icon--gold') }}
+            <span>Được Đánh Giá Cao Nhất (Top Rated)</span>
+          </h2>
+          <p class="cm-section__subtitle">Những kiệt tác điện ảnh có số điểm bình chọn cao nhất qua mọi thời đại.</p>
+        </div>
+      </div>
+      <div class="cm-grid">
+        {% for item in top_rated %}
+          {{ render_movie_card(item) }}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="cm-section" id="now-playing">
+      <div class="cm-section__header">
+        <div>
+          <div class="cm-hero__eyebrow">
+            {{ render_icon('film', 12, 'cm-icon--accent') }}
+            <span>IN THEATERS NOW</span>
+          </div>
+          <h2 class="cm-section__title" style="display: flex; align-items: center; gap: 10px;">
+            {{ render_icon('film', 24, 'cm-icon--accent') }}
+            <span>Đang Chiếu Rạp (Now Playing)</span>
+          </h2>
+          <p class="cm-section__subtitle">Các tác phẩm mới nhất vừa ra rạp tại các cụm rạp điện ảnh toàn cầu.</p>
+        </div>
+      </div>
+      <div class="cm-grid">
+        {% for item in now_playing %}
+          {{ render_movie_card(item) }}
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- SECTION C: SEARCH & FILTER RESULTS VIEW -->
+    {% else %}
+    <section class="cm-section" id="results">
+      <div class="cm-section__header">
+        <div>
+          <div class="cm-hero__eyebrow">
+            {{ render_icon('sparkle', 12, 'cm-icon--accent') }}
+            <span>KẾT QUẢ DANH MỤC</span>
+          </div>
+          <h2 class="cm-section__title">
+            {% if mode == 'mood' and mood_profile %}
+              Phim dành cho lúc {{ mood_profile.emoji }} {{ mood_profile.label|lower }}
+            {% elif mode == 'ai' and query %}
+              Kết quả Tìm kiếm Ngữ nghĩa AI: “{{ query }}”
+            {% elif query %}
+              Phim khớp từ khóa: “{{ query }}”
+            {% elif selected_genres or selected_topics %}
+              Danh sách Phim theo Bộ lọc đã chọn
+            {% else %}
+              Danh mục Phim Khám phá
+            {% endif %}
+          </h2>
+          <p class="cm-section__subtitle">Tìm thấy {{ total }} tác phẩm phù hợp.</p>
+        </div>
+      </div>
+
+      <!-- AI Cinema Insight Box for Search Results -->
+      <div class="cm-insight">
+        <div class="cm-insight__header">
+          <div class="cm-insight__title">
+            {{ render_icon('sparkle', 14) }}
+            <span>AI CINEMA INSIGHT</span>
+          </div>
+          <span class="cm-insight__badge">
+            {% if mode == 'mood' and mood_profile %}
+              AI Mood Matching
+            {% elif mode == 'ai' and query %}
+              Mô hình AI Semantic ONNX
+            {% elif query %}
+              TMDB Entity Extraction
+            {% elif selected_genres or selected_topics %}
+              Multi-Attribute Filtration
+            {% else %}
+              Dynamic Catalog Feed
+            {% endif %}
+          </span>
+        </div>
+        <p class="cm-insight__text">
+          {% if mode == 'mood' and mood_profile %}
+            Bạn đang cảm thấy <strong>{{ mood_profile.label|lower }}</strong>. CineMatch ưu tiên {{ mood_profile.description|lower }}{% if query %} Yêu cầu thêm của bạn: “<strong>{{ query }}</strong>”.{% endif %}
+          {% elif mode == 'ai' and query %}
+            Hệ thống đã phân tích không gian ngữ nghĩa cho truy vấn “<strong>{{ query }}</strong>”, trích xuất các vector đặc trưng về bối cảnh, chủ đề và cảm xúc để xếp hạng các tác phẩm tương đồng cao nhất.
+          {% elif query %}
+            Đã truy xuất cơ sở dữ liệu TMDB cho từ khóa “<strong>{{ query }}</strong>”, đối soát thông tin Đạo diễn, Diễn viên và Thể loại để mang lại kết quả điện ảnh chính xác nhất.
+          {% elif selected_genres or selected_topics %}
+            Đã lọc và tổng hợp danh mục phim phù hợp với các tiêu chí thể loại ({% for g in selected_genres %}{{ g }}{% if not loop.last %}, {% endif %}{% endfor %}) và chủ đề đặc thù được yêu cầu.
+          {% else %}
+            Khám phá kho phim trực tuyến qua cơ sở dữ liệu TMDB với các tác phẩm được cập nhật liên tục.
+          {% endif %}
+        </p>
+        <div class="cm-insight__entities">
+          <span class="cm-insight__entity-tag">Thực thể nhận diện:</span>
+          {% if mode == 'mood' and mood_profile %}
+          <span class="cm-insight__pill">{{ mood_profile.emoji }} {{ mood_profile.label }}</span>
+          <span class="cm-insight__pill">Gợi ý theo cảm xúc</span>
+          {% elif mode == 'ai' and query %}
+          <span class="cm-insight__pill">{{ render_icon('sparkle', 12, 'cm-icon--ai') }} Phân tích cốt truyện</span>
+          {% elif query %}
+          <span class="cm-insight__pill">{{ render_icon('film', 12) }} Khớp tiêu đề & nhân vật</span>
+          {% endif %}
+          <span class="cm-insight__pill">{{ total }} tác phẩm phù hợp</span>
+          {% for g in selected_genres %}
+          <span class="cm-insight__pill">{{ g }}</span>
+          {% endfor %}
+          {% for t in selected_topics %}
+          <span class="cm-insight__pill">{{ t }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="cm-grid">
+        {% for item in movies %}
+          {{ render_movie_card(item) }}
+        {% else %}
+          <div class="cm-empty-notice">
+            <h3 class="cm-empty-notice__title">Không tìm thấy phim phù hợp</h3>
+            <p class="cm-empty-notice__text">Thử điều chỉnh câu mô tả, tên phim hoặc bỏ bớt các bộ lọc thể loại/chủ đề.</p>
+            <a href="{{ url_for('home') }}" class="cm-omnibar__submit-btn" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; margin: 0 auto;">
+              <span>Xem toàn bộ phim</span>
+              {{ render_icon('arrow-right', 14) }}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if pages > 1 %}
+      <nav class="cm-pagination" aria-label="Phân trang danh mục">
+        {% if page > 1 %}
+        <a href="{{ url_for('home', q=query, mode=mode, mood=selected_mood, method=method, genre=selected_genres, topic=selected_topics, sort=sort, page=page-1) }}#results" style="display: inline-flex; align-items: center; gap: 6px;">
+          {{ render_icon('arrow-left', 13) }}
+          <span>Trang trước</span>
+        </a>
+        {% endif %}
+        <span style="color: var(--sp-color-text-muted);">Trang {{ page }} / {{ pages }}</span>
+        {% if page < pages %}
+        <a href="{{ url_for('home', q=query, mode=mode, mood=selected_mood, method=method, genre=selected_genres, topic=selected_topics, sort=sort, page=page+1) }}#results" style="display: inline-flex; align-items: center; gap: 6px;">
+          <span>Trang sau</span>
+          {{ render_icon('arrow-right', 13) }}
+        </a>
+        {% endif %}
+      </nav>
+      {% endif %}
+    </section>
+    {% endif %}
+
+    {% endif %}
+  </main>
+
+  <!-- ==========================================
+       SETTINGS MODAL (CẤU HÌNH TMDB API KEY)
+       ========================================== -->
+  <div class="cm-modal-overlay" id="settings-modal" onclick="if(event.target === this) closeSettingsModal()">
+    <div class="cm-modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+      <div class="cm-modal__header">
+        <h3 class="cm-modal__title" id="modal-title" style="display: flex; align-items: center; gap: 8px;">
+          {{ render_icon('settings', 18, 'cm-icon--accent') }}
+          <span>Cấu hình TMDB API Key</span>
+        </h3>
+        <button type="button" class="cm-modal__close" onclick="closeSettingsModal()" aria-label="Đóng modal" style="display: flex; align-items: center; justify-content: center;">
+          {{ render_icon('close', 16) }}
+        </button>
+      </div>
+
+      <div class="cm-modal__steps">
+        <p style="font-weight: 700; margin-bottom: 8px; color: var(--sp-color-text-primary);">Hướng dẫn 3 bước kết nối trực tiếp TMDB API miễn phí:</p>
+        <ol>
+          <li>Đăng ký tài khoản miễn phí tại <a href="https://www.themoviedb.org/signup" target="_blank" rel="noopener">themoviedb.org</a>.</li>
+          <li>Truy cập <a href="https://www.themoviedb.org/settings/api" target="_blank" rel="noopener">Settings → API</a> để tạo <strong>API Key (v3 auth)</strong> hoặc <strong>API Read Access Token</strong>.</li>
+          <li>Dán mã khóa vào ô bên dưới rồi nhấn <strong>Lưu & Kích hoạt</strong> (hệ thống sẽ tự động lưu vào file <code>.env</code>).</li>
+        </ol>
+      </div>
+
+      <form class="cm-modal__form" action="{{ url_for('update_api_key') }}" method="post">
+        <input type="hidden" name="redirect_to" value="{{ request.full_path }}">
+        <label for="api-key-input" style="font-size: 12px; font-weight: 600; color: var(--sp-color-text-secondary);">TMDB API Key hoặc Read Access Token:</label>
+        <input
+          id="api-key-input"
+          name="api_key"
+          type="password"
+          class="cm-modal__input"
+          placeholder="Nhập TMDB API Key của bạn tại đây…"
+          value="{{ active_api_key }}"
+          autocomplete="off"
+          required
+        >
+        <button type="submit" class="cm-modal__submit" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+          <span>Lưu & Kích hoạt Trực tuyến</span>
+          {{ render_icon('arrow-up-right', 14) }}
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER (.cm-footer)
+       ========================================== -->
+  <footer class="cm-footer">
+    <div class="cm-footer__inner">
+      <div>
+        <strong>CineMatch</strong> — Hệ thống Khám phá & Gợi ý Điện ảnh Thời gian thực
+        <div style="margin-top: 4px; color: var(--sp-color-text-muted);">
+          Sử dụng TMDB API & Sentence Transformers ONNX Runtime (CPU) · Không phụ thuộc CSV tĩnh
+        </div>
+      </div>
+      <div>
+        Thiết kế theo chuẩn <strong>The Aesthetic OS (Material 3 Expressive & Neural Dynamic)</strong>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       CLIENT SCRIPT
+       ========================================== -->
+  <script>
+    function openSettingsModal() {
+      document.getElementById('settings-modal').classList.add('cm-modal-overlay--open');
+      document.getElementById('api-key-input').focus();
+    }
+
+    function closeSettingsModal() {
+      document.getElementById('settings-modal').classList.remove('cm-modal-overlay--open');
+    }
+
+    function focusSearchAI() {
+      setSearchMode('ai');
+      const form = document.getElementById('search-form');
+      const input = document.getElementById('q');
+      if (form) {
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      if (input) {
+        setTimeout(() => input.focus(), 350);
+      }
+    }
+
+    function focusSearchInput(event) {
+      if (event) event.preventDefault();
+      const form = document.getElementById('search-form');
+      const input = document.getElementById('q');
+      if (form) {
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      if (input) {
+        setTimeout(() => input.focus(), 350);
+      }
+    }
+
+    function setSearchMode(mode) {
+      document.getElementById('search-mode-input').value = mode;
+      const input = document.getElementById('q');
+      const tabs = document.querySelectorAll('.cm-omnibar__tab-btn');
+      const moodPicker = document.getElementById('mood-picker');
+      const moodInput = document.getElementById('mood-input');
+      const submitLabel = document.querySelector('#btn-submit-search span');
+      tabs.forEach(t => t.classList.remove('cm-omnibar__tab-btn--active'));
+      const activeTab = document.querySelector(`[data-search-mode="${mode}"]`);
+      if (activeTab) activeTab.classList.add('cm-omnibar__tab-btn--active');
+
+      if (mode === 'mood') {
+        if (moodPicker) moodPicker.hidden = false;
+        input.placeholder = 'Có thể mô tả thêm: “tôi muốn phim nhẹ nhàng, kết thúc có hậu”…';
+        if (submitLabel) submitLabel.textContent = 'Tìm phim hợp tâm trạng';
+      } else if (mode === 'ai') {
+        if (moodPicker) moodPicker.hidden = true;
+        if (moodInput) moodInput.value = '';
+        input.placeholder = "Nhập mô tả cốt truyện: ví dụ 'phim về du hành không gian và lỗ sâu vũ trụ', 'hoạt hình về đồ chơi'…";
+        if (submitLabel) submitLabel.textContent = 'Tìm kiếm & Gợi ý';
+      } else {
+        if (moodPicker) moodPicker.hidden = true;
+        if (moodInput) moodInput.value = '';
+        input.placeholder = "Nhập tên phim, đạo diễn, diễn viên: ví dụ 'phim của Trấn Thành đạo diễn', 'Interstellar', 'Christopher Nolan'…";
+        if (submitLabel) submitLabel.textContent = 'Tìm kiếm & Gợi ý';
+      }
+      input.focus();
+    }
+
+    function selectMood(moodKey, button) {
+      const moodInput = document.getElementById('mood-input');
+      if (moodInput) moodInput.value = moodKey;
+      document.querySelectorAll('.cm-mood-card').forEach(card => {
+        const isActive = card === button;
+        card.classList.toggle('cm-mood-card--active', isActive);
+        card.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      const submitButton = document.getElementById('btn-submit-search');
+      if (submitButton) submitButton.focus();
+    }
+
+    function toggleFilterShelf() {
+      const shelf = document.getElementById('filter-shelf');
+      const btn = document.getElementById('shelf-toggle-btn');
+      if (!shelf || !btn) return;
+
+      const isExpanded = shelf.classList.contains('cm-shelf--expanded');
+      if (isExpanded) {
+        shelf.classList.remove('cm-shelf--expanded');
+        btn.classList.remove('cm-shelf-toggle--active');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        shelf.classList.add('cm-shelf--expanded');
+        btn.classList.add('cm-shelf-toggle--active');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function seedMovie(event, movieId) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.location.href = `/movie/${movieId}`;
+    }
+
+    function clearGenreFilters() {
+      document.querySelectorAll('input[name="genre"]').forEach(cb => cb.checked = false);
+    }
+
+    function clearTopicFilters() {
+      document.querySelectorAll('input[name="topic"]').forEach(cb => cb.checked = false);
+    }
+
+    function applyProgressBars(container) {
+      const root = container || document;
+      root.querySelectorAll('.cm-popover__bar-fill[data-progress]').forEach(function(el) {
+        const val = el.getAttribute('data-progress');
+        if (val !== null && val !== '') {
+          el.style.width = Math.min(100, Math.max(0, parseFloat(val))) + '%';
+        }
+      });
+    }
+
+    function toggleCardPopover(event, wrapEl) {
+      event.preventDefault();
+      event.stopPropagation();
+      const popover = wrapEl.querySelector('.cm-popover');
+      if (!popover) return;
+      const isVisible = popover.classList.contains('cm-popover--visible');
+      // Đóng các popover khác đang mở
+      document.querySelectorAll('.cm-popover--visible').forEach(p => p.classList.remove('cm-popover--visible'));
+      if (!isVisible) {
+        popover.classList.add('cm-popover--visible');
+        applyProgressBars(popover);
+      }
+    }
+
+    // Đóng popover khi nhấp ra ngoài
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.cm-card__badge-wrap')) {
+        document.querySelectorAll('.cm-popover--visible').forEach(p => p.classList.remove('cm-popover--visible'));
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      applyProgressBars(document);
+    });
+
+    // Đóng modal và popover khi bấm phím ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeSettingsModal();
+        document.querySelectorAll('.cm-popover--visible').forEach(p => p.classList.remove('cm-popover--visible'));
+      }
+    });
+
+    // ==========================================
+    // LANDING PAGE PILL BAR & SCROLLSPY
+    // Quản lý trạng thái Active cho Navigation Pill
+    // ==========================================
+    function updateActiveNavLink(targetId) {
+      const nav = document.getElementById('cm-main-nav');
+      if (!nav) return;
+      const links = nav.querySelectorAll('.cm-header__nav-link');
+      links.forEach(l => l.classList.remove('cm-header__nav-link--active'));
+
+      let activeLink = null;
+      if (targetId) {
+        activeLink = nav.querySelector(`[data-nav="${targetId}"]`);
+      }
+      if (!activeLink) {
+        activeLink = nav.querySelector('[data-nav="home"]');
+      }
+      if (activeLink) {
+        activeLink.classList.add('cm-header__nav-link--active');
+      }
+    }
+
+    function setupNavLinks() {
+      const nav = document.getElementById('cm-main-nav');
+      if (!nav) return;
+
+      nav.addEventListener('click', function(e) {
+        const link = e.target.closest('.cm-header__nav-link');
+        if (!link) return;
+
+        const navTarget = link.getAttribute('data-nav');
+        if (navTarget === 'ai') {
+          updateActiveNavLink('ai');
+          return;
+        }
+
+        const href = link.getAttribute('href') || '';
+        const hashIndex = href.indexOf('#');
+        if (hashIndex !== -1) {
+          const targetId = href.substring(hashIndex + 1);
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            history.replaceState(null, null, '#' + targetId);
+            updateActiveNavLink(navTarget);
+          }
+        } else if (navTarget === 'home') {
+          const path = window.location.pathname;
+          if (path === '/' || path === '') {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (!urlParams.get('q') && !urlParams.get('genre') && !urlParams.get('topic')) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              history.replaceState(null, null, ' ');
+              updateActiveNavLink('home');
+            }
+          }
+        }
+      });
+    }
+
+    function setupScrollSpy() {
+      const sections = [
+        { id: 'now-playing', nav: 'now-playing' },
+        { id: 'top-rated', nav: 'top-rated' },
+        { id: 'trending', nav: 'trending' },
+        { id: 'search-form', nav: 'home' }
+      ];
+
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            const scrollPos = window.scrollY + 160;
+            let currentNav = 'home';
+
+            if (window.scrollY < 240) {
+              currentNav = 'home';
+            } else {
+              for (const s of sections) {
+                const el = document.getElementById(s.id);
+                if (el) {
+                  const top = el.offsetTop;
+                  if (scrollPos >= top) {
+                    currentNav = s.nav;
+                    break;
+                  }
+                }
+              }
+            }
+            updateActiveNavLink(currentNav);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+
+    // Khởi tạo trạng thái ban đầu dựa vào URL Hash và vị trí cuộn
+    function initPillNav() {
+      setupNavLinks();
+      setupScrollSpy();
+
+      const hash = window.location.hash.replace('#', '');
+      if (hash && (hash === 'trending' || hash === 'top-rated' || hash === 'now-playing')) {
+        updateActiveNavLink(hash);
+      } else {
+        updateActiveNavLink('home');
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPillNav);
+    } else {
+      initPillNav();
+    }
+
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && (hash === 'trending' || hash === 'top-rated' || hash === 'now-playing')) {
+        updateActiveNavLink(hash);
+      } else {
+        updateActiveNavLink('home');
+      }
+    });
+  </script>
+</body>
+</html>

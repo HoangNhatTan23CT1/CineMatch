@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CineMatch: Chạy website",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": ["app.py"],
+            "options": {
+                "cwd": "${workspaceFolder}/app"
+            },
+            "problemMatcher": [],
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "CineMatch: Chạy kiểm thử",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": ["-m", "unittest", "-v"],
+            "options": {
+                "cwd": "${workspaceFolder}/app"
+            },
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "CineMatch: Tải mô hình AI",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": ["setup_ai.py"],
+            "options": {
+                "cwd": "${workspaceFolder}/app"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

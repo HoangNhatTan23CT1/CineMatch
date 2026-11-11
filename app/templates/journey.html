@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hành trình cảm xúc · CineMatch</title>
+  <meta name="description" content="Tạo một hành trình điện ảnh dẫn từ tâm trạng hiện tại đến cảm xúc bạn muốn đạt được.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=journey1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='journey.css') }}?v=journey1">
+</head>
+<body class="journey-page">
+  <header class="journey-header">
+    <a class="journey-brand" href="{{ url_for('home') }}" aria-label="CineMatch Trang chủ">
+      <span class="journey-brand__logo">✦</span>
+      <span>CineMatch</span>
+      <small>Emotion Engine</small>
+    </a>
+    <nav class="journey-header__actions" aria-label="Điều hướng Hành trình cảm xúc">
+      <a href="{{ url_for('home', mode='mood') }}">Tìm theo tâm trạng</a>
+      <a class="journey-header__back" href="{{ url_for('home') }}">← Về Khám phá</a>
+    </nav>
+  </header>
+
+  <main class="journey-main">
+    <section class="journey-hero">
+      <div class="journey-hero__aurora" aria-hidden="true"></div>
+      <span class="journey-kicker">✦ CINEMATCH EMOTION ENGINE</span>
+      <h1>Từ cảm xúc hiện tại<br>đến cảm giác bạn <em>muốn mang theo.</em></h1>
+      <p>CineMatch thiết kế một “đơn phim” theo tâm trạng, quỹ thời gian và người xem cùng bạn. Mỗi tác phẩm là một bước trong đường cong cảm xúc.</p>
+    </section>
+
+    <form class="journey-builder" action="{{ url_for('mood_journey') }}" method="get" id="journey-builder">
+      <input type="hidden" name="build" value="1">
+
+      <fieldset class="journey-step">
+        <legend><span>01</span><strong>Bây giờ bạn đang cảm thấy thế nào?</strong></legend>
+        <div class="journey-choice-grid journey-choice-grid--moods">
+          {% for mood in moods %}
+          <label class="journey-choice">
+            <input type="radio" name="current_mood" value="{{ mood.key }}" {% if current_mood == mood.key %}checked{% endif %} required>
+            <span class="journey-choice__surface">
+              <b aria-hidden="true">{{ mood.emoji }}</b>
+              <span><strong>{{ mood.label }}</strong><small>{{ mood.description }}</small></span>
+            </span>
+          </label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset class="journey-step">
+        <legend><span>02</span><strong>Sau buổi xem, bạn muốn cảm thấy...</strong></legend>
+        <div class="journey-choice-grid journey-choice-grid--destinations">
+          {% for target in destinations %}
+          <label class="journey-choice journey-choice--destination">
+            <input type="radio" name="target_mood" value="{{ target.key }}" {% if target_mood == target.key %}checked{% endif %} required>
+            <span class="journey-choice__surface">
+              <b aria-hidden="true">{{ target.emoji }}</b>
+              <span><strong>{{ target.label }}</strong><small>{{ target.description }}</small></span>
+            </span>
+          </label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset class="journey-step">
+        <legend><span>03</span><strong>Thiết kế buổi xem của bạn</strong></legend>
+        <div class="journey-context-grid">
+          <div class="journey-field">
+            <label for="duration">Bạn có bao nhiêu thời gian?</label>
+            <select id="duration" name="duration">
+              {% for item in durations %}
+              <option value="{{ item.value }}" {% if duration == item.value %}selected{% endif %}>{{ item.label }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="journey-field">
+            <span class="journey-field__label">Bạn xem cùng ai?</span>
+            <div class="journey-segmented">
+              {% for item in companies %}
+              <label>
+                <input type="radio" name="company" value="{{ item.key }}" {% if company == item.key %}checked{% endif %}>
+                <span>{{ item.emoji }} {{ item.label }}</span>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="journey-field">
+            <span class="journey-field__label">Cường độ cảm xúc</span>
+            <div class="journey-segmented">
+              {% for item in intensities %}
+              <label>
+                <input type="radio" name="intensity" value="{{ item.key }}" {% if intensity == item.key %}checked{% endif %}>
+                <span>{{ item.emoji }} {{ item.label }}</span>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="journey-builder__submit-wrap">
+        <p>AI sẽ kết hợp cảm xúc, nội dung, thể loại, điểm chất lượng và thời lượng thực tế.</p>
+        <button type="submit" class="journey-primary-button"><span>✦</span> Tạo đơn phim cho tôi</button>
+      </div>
+    </form>
+
+    {% if warning %}
+    <div class="journey-alert" role="alert">{{ warning }}</div>
+    {% endif %}
+
+    {% if journey and journey.movies %}
+    <section class="journey-prescription" id="prescription" aria-labelledby="prescription-title">
+      <div class="journey-prescription__topline">
+        <div>
+          <span class="journey-kicker">ĐƠN PHIM TỐI NAY · AI CURATED</span>
+          <h2 id="prescription-title">{{ journey.headline }}</h2>
+          <p>{{ journey.summary }}</p>
+        </div>
+        <div class="journey-prescription__actions">
+          <button type="button" onclick="shareJourney()">↗ Chia sẻ</button>
+          <button type="button" onclick="window.print()">⇩ Lưu PDF</button>
+        </div>
+      </div>
+
+      <div class="journey-summary-pills">
+        <span>{{ journey.current.emoji }} {{ journey.current.label }}</span>
+        <span>→</span>
+        <span>{{ journey.target.emoji }} {{ journey.target.label }}</span>
+        <span>◷ {{ journey.total_duration }} phút</span>
+        <span>{{ journey.company.emoji }} {{ journey.company.label }}</span>
+        <span>{{ journey.intensity.emoji }} {{ journey.intensity.label }}</span>
+      </div>
+
+      <div class="journey-curve" aria-label="Đường cong cảm xúc của hành trình">
+        <div class="journey-curve__line" aria-hidden="true"></div>
+        <div class="journey-curve__point journey-curve__point--start">
+          <b>{{ journey.current.emoji }}</b><span>Hiện tại</span><strong>{{ journey.current.label }}</strong>
+        </div>
+        {% for movie in journey.movies %}
+        <div class="journey-curve__point">
+          <b>{{ loop.index }}</b><span>{{ movie.journey_stage }}</span><strong>{{ movie.title }}</strong>
+        </div>
+        {% endfor %}
+        <div class="journey-curve__point journey-curve__point--target">
+          <b>{{ journey.target.emoji }}</b><span>Điểm đến</span><strong>{{ journey.target.label }}</strong>
+        </div>
+      </div>
+
+      <div class="journey-movie-list">
+        {% for movie in journey.movies %}
+        <article class="journey-movie-card">
+          <div class="journey-movie-card__poster">
+            {% if movie.poster_url %}
+            <img src="{{ movie.poster_url }}" alt="Poster {{ movie.title }}" loading="lazy">
+            {% else %}
+            <div class="journey-movie-card__fallback">🎬</div>
+            {% endif %}
+            <span class="journey-movie-card__match">{{ movie.journey_match }}% phù hợp</span>
+          </div>
+          <div class="journey-movie-card__content">
+            <span class="journey-movie-card__stage">{{ movie.journey_stage }}</span>
+            <h3>{{ movie.title }}</h3>
+            <div class="journey-movie-card__meta">
+              <span>★ {{ '%.1f'|format(movie.vote_average or 0) }}</span>
+              <span>{{ movie.year or 'N/A' }}</span>
+              <span>{{ movie.runtime }} phút</span>
+              {% for genre in movie.genres[:3] %}<span>{{ genre }}</span>{% endfor %}
+            </div>
+            <p class="journey-movie-card__reason">{{ movie.journey_reason }}</p>
+            <p class="journey-movie-card__overview">{{ movie.overview or 'Chưa có mô tả cho tác phẩm này.' }}</p>
+
+            {% if movie.cast %}
+            <div class="journey-movie-card__cast"><strong>Diễn viên</strong>{% for actor in movie.cast[:4] %}<span>{{ actor }}</span>{% endfor %}</div>
+            {% endif %}
+
+            {% if movie.content_notes %}
+            <div class="journey-movie-card__notes"><strong>Lưu ý nội dung</strong>{% for note in movie.content_notes %}<span>{{ note }}</span>{% endfor %}</div>
+            {% endif %}
+
+            <div class="journey-movie-card__links">
+              <a class="journey-card-button journey-card-button--primary" href="{{ url_for('detail', movie_id=movie.id) }}">Xem chi tiết & nguồn xem</a>
+              {% if movie.trailer_url %}<a class="journey-card-button" href="{{ movie.trailer_url }}" target="_blank" rel="noopener noreferrer">Trailer ↗</a>{% endif %}
+              {% for source in movie.sources[:2] %}<a class="journey-card-button" href="{{ source.url }}" target="_blank" rel="noopener noreferrer">{{ source.label }} ↗</a>{% endfor %}
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+
+      <div class="journey-prescription__footer">
+        <div><strong>{{ journey.total_duration }} phút</strong><span>Tổng thời lượng</span></div>
+        <div><strong>{{ journey.movies|length }} tác phẩm</strong><span>Đường cong cảm xúc</span></div>
+        <div><strong>{{ journey.remaining_duration }} phút</strong><span>Thời gian dự phòng</span></div>
+        <a href="#journey-builder">Điều chỉnh hành trình ↑</a>
+      </div>
+    </section>
+    {% elif submitted and not warning %}
+    <div class="journey-alert" role="status">Chưa tìm được hành trình phù hợp. Hãy thử thay đổi thời lượng hoặc cường độ.</div>
+    {% endif %}
+  </main>
+
+  <div class="journey-toast" id="journey-toast" role="status" aria-live="polite"></div>
+  <script>
+    async function shareJourney() {
+      const data = {
+        title: 'Hành trình cảm xúc · CineMatch',
+        text: '{{ journey.headline if journey else "Đơn phim cảm xúc của tôi" }}',
+        url: window.location.href
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(data);
+          return;
+        }
+        await navigator.clipboard.writeText(data.url);
+        showJourneyToast('Đã sao chép liên kết hành trình');
+      } catch (error) {
+        if (error && error.name === 'AbortError') return;
+        window.prompt('Sao chép liên kết hành trình:', data.url);
+      }
+    }
+
+    function showJourneyToast(message) {
+      const toast = document.getElementById('journey-toast');
+      toast.textContent = message;
+      toast.classList.add('journey-toast--visible');
+      window.setTimeout(() => toast.classList.remove('journey-toast--visible'), 2600);
+    }
+
+    if (window.location.hash === '#prescription') {
+      document.getElementById('prescription')?.scrollIntoView({behavior: 'smooth'});
+    }
+  </script>
+</body>
+</html>

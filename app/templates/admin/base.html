@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Quản trị{% endblock %} · CineMatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}?v=1">
+</head>
+<body>
+  <header class="admin-header">
+    <a class="admin-brand" href="{{ url_for('admin.dashboard') }}"><span>✦</span> CineMatch <b>Studio</b></a>
+    {% if session.get('admin_id') %}
+    <nav class="admin-nav">
+      <a href="{{ url_for('home') }}" target="_blank">Xem trang phim ↗</a>
+      <span>{{ session.get('admin_username') }}</span>
+      <form method="post" action="{{ url_for('admin.logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="button button--ghost" type="submit">Đăng xuất</button>
+      </form>
+    </nav>
+    {% endif %}
+  </header>
+  <main class="admin-main">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}<div class="notice notice--{{ category }}">{{ message }}</div>{% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

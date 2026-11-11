@@ -1,0 +1,35 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Generated AI artifacts (download with app/setup_ai.py)
+models/
+
+# Runtime files
+*.log
+*.pid
+instance/
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+
+# Build and coverage
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/

@@ -1,0 +1,2239 @@
+{
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python_version": "3.14.4",
+  "sample_size": 12,
+  "k": 6,
+  "methods": {
+    "tfidf": {
+      "method": "tfidf",
+      "mean_ndcg": 0.996,
+      "mean_precision": 0.2778,
+      "mean_genre_consistency": 0.4786,
+      "mean_diversity": 0.5694,
+      "cases": [
+        {
+          "source_id": 157336,
+          "source_title": "Interstellar",
+          "category": "Khoa học viễn tưởng / Vũ trụ",
+          "recs": [
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.312,
+              "match_percentage": 31,
+              "reason": "Thể loại: Adventure, Science Fiction • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.242,
+              "match_percentage": 24,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.226,
+              "match_percentage": 23,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.209,
+              "match_percentage": 21,
+              "reason": "Thể loại: Drama • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.204,
+              "match_percentage": 20,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.164,
+              "match_percentage": 16,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            }
+          ],
+          "ndcg": 0.984,
+          "precision": 0.667,
+          "genre_consistency": 0.386,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 27205,
+          "source_title": "Inception",
+          "category": "Hành động / Trí tuệ",
+          "recs": [
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.366,
+              "match_percentage": 37,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.365,
+              "match_percentage": 36,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.284,
+              "match_percentage": 28,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 155,
+          "source_title": "The Dark Knight",
+          "category": "Hành động / Tội phạm / Siêu anh hùng",
+          "recs": [
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.234,
+              "match_percentage": 23,
+              "reason": "Thể loại: Crime, Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.207,
+              "match_percentage": 21,
+              "reason": "Thể loại: Drama • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.207,
+              "match_percentage": 21,
+              "reason": "Thể loại: Action • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 138843,
+              "title": "The Conjuring",
+              "similarity": 0.156,
+              "match_percentage": 16,
+              "reason": "Thể loại: Thriller",
+              "genres": [
+                "Horror",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 244786,
+              "title": "Whiplash",
+              "similarity": 0.144,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Music"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.141,
+              "match_percentage": 15,
+              "reason": "Thể loại: Action",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 0.981,
+          "precision": 0.167,
+          "genre_consistency": 0.233,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 19995,
+          "source_title": "Avatar",
+          "category": "Khoa học viễn tưởng / Phiêu lưu",
+          "recs": [
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.304,
+              "match_percentage": 30,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.298,
+              "match_percentage": 30,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.296,
+              "match_percentage": 30,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 0.996,
+          "precision": 0.5,
+          "genre_consistency": 0.75,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 597,
+          "source_title": "Titanic",
+          "category": "Tình cảm / Thảm họa",
+          "recs": [
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.199,
+              "match_percentage": 20,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 244786,
+              "title": "Whiplash",
+              "similarity": 0.191,
+              "match_percentage": 19,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Music"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.159,
+              "match_percentage": 16,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.147,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.058,
+              "match_percentage": 15,
+              "reason": "Cùng đạo diễn: James Cameron",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.039,
+              "match_percentage": 15,
+              "reason": "Diễn viên chung: Leonardo DiCaprio",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.0,
+          "genre_consistency": 0.186,
+          "diversity": 0.667
+        },
+        {
+          "source_id": 862,
+          "source_title": "Toy Story",
+          "category": "Hoạt hình / Gia đình",
+          "recs": [
+            {
+              "id": 12,
+              "title": "Finding Nemo",
+              "similarity": 0.218,
+              "match_percentage": 22,
+              "reason": "Thể loại: Animation, Family",
+              "genres": [
+                "Animation",
+                "Family"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.135,
+              "match_percentage": 15,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.135,
+              "match_percentage": 15,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.133,
+              "match_percentage": 15,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.132,
+              "match_percentage": 15,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.114,
+              "match_percentage": 15,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 0.997,
+          "precision": 0.167,
+          "genre_consistency": 0.218,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 244786,
+          "source_title": "Whiplash",
+          "category": "Âm nhạc / Tâm lý",
+          "recs": [
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.203,
+              "match_percentage": 20,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 597,
+              "title": "Titanic",
+              "similarity": 0.183,
+              "match_percentage": 18,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Romance"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.159,
+              "match_percentage": 16,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.147,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.035,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 12,
+              "title": "Finding Nemo",
+              "similarity": 0.035,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Animation",
+                "Family"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.0,
+          "genre_consistency": 0.186,
+          "diversity": 0.667
+        },
+        {
+          "source_id": 138843,
+          "source_title": "The Conjuring",
+          "category": "Kinh dị / Siêu nhiên",
+          "recs": [
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.174,
+              "match_percentage": 17,
+              "reason": "Thể loại: Thriller",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.038,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.035,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.035,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 244786,
+              "title": "Whiplash",
+              "similarity": 0.035,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Drama",
+                "Music"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.034,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 0.994,
+          "precision": 0.0,
+          "genre_consistency": 0.033,
+          "diversity": 0.667
+        },
+        {
+          "source_id": 299536,
+          "source_title": "Avengers: Infinity War",
+          "category": "Siêu anh hùng / Kỳ ảo",
+          "recs": [
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.374,
+              "match_percentage": 37,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.368,
+              "match_percentage": 37,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.284,
+              "match_percentage": 28,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 278,
+          "source_title": "The Shawshank Redemption",
+          "category": "Tâm lý / Tội phạm",
+          "recs": [
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.231,
+              "match_percentage": 23,
+              "reason": "Thể loại: Crime, Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.167,
+          "genre_consistency": 0.5,
+          "diversity": 0.167
+        },
+        {
+          "source_id": 12,
+          "source_title": "Finding Nemo",
+          "category": "Hoạt hình / Phiêu lưu biển cả",
+          "recs": [
+            {
+              "id": 862,
+              "title": "Toy Story",
+              "similarity": 0.221,
+              "match_percentage": 22,
+              "reason": "Thể loại: Animation, Family",
+              "genres": [
+                "Animation",
+                "Adventure",
+                "Family",
+                "Comedy"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.167,
+          "genre_consistency": 0.5,
+          "diversity": 0.167
+        },
+        {
+          "source_id": 11,
+          "source_title": "Star Wars",
+          "category": "Sử thi vũ trụ / Phiêu lưu",
+          "recs": [
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.375,
+              "match_percentage": 37,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.368,
+              "match_percentage": 37,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.293,
+              "match_percentage": 29,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        }
+      ]
+    },
+    "ai": {
+      "method": "ai",
+      "mean_ndcg": 0.9806,
+      "mean_precision": 0.2778,
+      "mean_genre_consistency": 0.4781,
+      "mean_diversity": 0.5833,
+      "cases": [
+        {
+          "source_id": 157336,
+          "source_title": "Interstellar",
+          "category": "Khoa học viễn tưởng / Vũ trụ",
+          "recs": [
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.486,
+              "match_percentage": 49,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.397,
+              "match_percentage": 40,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.352,
+              "match_percentage": 35,
+              "reason": "Thể loại: Adventure, Science Fiction • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.315,
+              "match_percentage": 32,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 862,
+              "title": "Toy Story",
+              "similarity": 0.247,
+              "match_percentage": 25,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Animation",
+                "Adventure",
+                "Family",
+                "Comedy"
+              ]
+            },
+            {
+              "id": 597,
+              "title": "Titanic",
+              "similarity": 0.237,
+              "match_percentage": 24,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Romance"
+              ]
+            }
+          ],
+          "ndcg": 0.999,
+          "precision": 0.667,
+          "genre_consistency": 0.386,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 27205,
+          "source_title": "Inception",
+          "category": "Hành động / Trí tuệ",
+          "recs": [
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.442,
+              "match_percentage": 44,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.346,
+              "match_percentage": 35,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.248,
+              "match_percentage": 25,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 0.977,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 155,
+          "source_title": "The Dark Knight",
+          "category": "Hành động / Tội phạm / Siêu anh hùng",
+          "recs": [
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.36,
+              "match_percentage": 36,
+              "reason": "Thể loại: Action",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 138843,
+              "title": "The Conjuring",
+              "similarity": 0.342,
+              "match_percentage": 34,
+              "reason": "Thể loại: Thriller",
+              "genres": [
+                "Horror",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.306,
+              "match_percentage": 31,
+              "reason": "Thể loại: Action",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.302,
+              "match_percentage": 30,
+              "reason": "Thể loại: Action • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.243,
+              "match_percentage": 24,
+              "reason": "Thể loại: Drama • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.229,
+              "match_percentage": 23,
+              "reason": "Thể loại: Crime, Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            }
+          ],
+          "ndcg": 0.93,
+          "precision": 0.167,
+          "genre_consistency": 0.228,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 19995,
+          "source_title": "Avatar",
+          "category": "Khoa học viễn tưởng / Phiêu lưu",
+          "recs": [
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.446,
+              "match_percentage": 45,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.434,
+              "match_percentage": 43,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.424,
+              "match_percentage": 42,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.5,
+          "genre_consistency": 0.75,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 597,
+          "source_title": "Titanic",
+          "category": "Tình cảm / Thảm họa",
+          "recs": [
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.309,
+              "match_percentage": 31,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.25,
+              "match_percentage": 25,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.147,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.132,
+              "match_percentage": 15,
+              "reason": "Cùng đạo diễn: James Cameron",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 244786,
+              "title": "Whiplash",
+              "similarity": 0.124,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Music"
+              ]
+            },
+            {
+              "id": 862,
+              "title": "Toy Story",
+              "similarity": 0.116,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Animation",
+                "Adventure",
+                "Family",
+                "Comedy"
+              ]
+            }
+          ],
+          "ndcg": 0.982,
+          "precision": 0.0,
+          "genre_consistency": 0.186,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 862,
+          "source_title": "Toy Story",
+          "category": "Hoạt hình / Gia đình",
+          "recs": [
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.295,
+              "match_percentage": 30,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 12,
+              "title": "Finding Nemo",
+              "similarity": 0.277,
+              "match_percentage": 28,
+              "reason": "Thể loại: Animation, Family",
+              "genres": [
+                "Animation",
+                "Family"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.261,
+              "match_percentage": 26,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.26,
+              "match_percentage": 26,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.25,
+              "match_percentage": 25,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.21,
+              "match_percentage": 21,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 0.933,
+          "precision": 0.167,
+          "genre_consistency": 0.218,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 244786,
+          "source_title": "Whiplash",
+          "category": "Âm nhạc / Tâm lý",
+          "recs": [
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.244,
+              "match_percentage": 24,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 597,
+              "title": "Titanic",
+              "similarity": 0.155,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Romance"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.115,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.083,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.069,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 138843,
+              "title": "The Conjuring",
+              "similarity": 0.068,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Horror",
+                "Thriller"
+              ]
+            }
+          ],
+          "ndcg": 0.991,
+          "precision": 0.0,
+          "genre_consistency": 0.186,
+          "diversity": 0.667
+        },
+        {
+          "source_id": 138843,
+          "source_title": "The Conjuring",
+          "category": "Kinh dị / Siêu nhiên",
+          "recs": [
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.348,
+              "match_percentage": 35,
+              "reason": "Thể loại: Thriller",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.136,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.124,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.124,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.12,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.102,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.0,
+          "genre_consistency": 0.033,
+          "diversity": 0.667
+        },
+        {
+          "source_id": 299536,
+          "source_title": "Avengers: Infinity War",
+          "category": "Siêu anh hùng / Kỳ ảo",
+          "recs": [
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.449,
+              "match_percentage": 45,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.445,
+              "match_percentage": 44,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.354,
+              "match_percentage": 35,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            }
+          ],
+          "ndcg": 0.957,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 278,
+          "source_title": "The Shawshank Redemption",
+          "category": "Tâm lý / Tội phạm",
+          "recs": [
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.233,
+              "match_percentage": 23,
+              "reason": "Thể loại: Crime, Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.167,
+          "genre_consistency": 0.5,
+          "diversity": 0.167
+        },
+        {
+          "source_id": 12,
+          "source_title": "Finding Nemo",
+          "category": "Hoạt hình / Phiêu lưu biển cả",
+          "recs": [
+            {
+              "id": 862,
+              "title": "Toy Story",
+              "similarity": 0.288,
+              "match_percentage": 29,
+              "reason": "Thể loại: Animation, Family",
+              "genres": [
+                "Animation",
+                "Adventure",
+                "Family",
+                "Comedy"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.167,
+          "genre_consistency": 0.5,
+          "diversity": 0.167
+        },
+        {
+          "source_id": 11,
+          "source_title": "Star Wars",
+          "category": "Sử thi vũ trụ / Phiêu lưu",
+          "recs": [
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.454,
+              "match_percentage": 45,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.429,
+              "match_percentage": 43,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.273,
+              "match_percentage": 27,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            }
+          ],
+          "ndcg": 0.997,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        }
+      ]
+    },
+    "hybrid": {
+      "method": "hybrid",
+      "mean_ndcg": 0.9884,
+      "mean_precision": 0.2778,
+      "mean_genre_consistency": 0.4781,
+      "mean_diversity": 0.5833,
+      "cases": [
+        {
+          "source_id": 157336,
+          "source_title": "Interstellar",
+          "category": "Khoa học viễn tưởng / Vũ trụ",
+          "recs": [
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.362,
+              "match_percentage": 36,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.355,
+              "match_percentage": 36,
+              "reason": "Thể loại: Adventure, Science Fiction • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.335,
+              "match_percentage": 34,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.304,
+              "match_percentage": 30,
+              "reason": "Thể loại: Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.254,
+              "match_percentage": 25,
+              "reason": "Thể loại: Drama • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.225,
+              "match_percentage": 22,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            }
+          ],
+          "ndcg": 0.993,
+          "precision": 0.667,
+          "genre_consistency": 0.386,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 27205,
+          "source_title": "Inception",
+          "category": "Hành động / Trí tuệ",
+          "recs": [
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.376,
+              "match_percentage": 38,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.375,
+              "match_percentage": 37,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.327,
+              "match_percentage": 33,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 0.969,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 155,
+          "source_title": "The Dark Knight",
+          "category": "Hành động / Tội phạm / Siêu anh hùng",
+          "recs": [
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.283,
+              "match_percentage": 28,
+              "reason": "Thể loại: Action • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.281,
+              "match_percentage": 28,
+              "reason": "Thể loại: Action",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 138843,
+              "title": "The Conjuring",
+              "similarity": 0.273,
+              "match_percentage": 27,
+              "reason": "Thể loại: Thriller",
+              "genres": [
+                "Horror",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.265,
+              "match_percentage": 26,
+              "reason": "Thể loại: Crime, Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.256,
+              "match_percentage": 26,
+              "reason": "Thể loại: Drama • Cùng đạo diễn: Christopher Nolan",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.254,
+              "match_percentage": 25,
+              "reason": "Thể loại: Action",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 0.906,
+          "precision": 0.167,
+          "genre_consistency": 0.228,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 19995,
+          "source_title": "Avatar",
+          "category": "Khoa học viễn tưởng / Phiêu lưu",
+          "recs": [
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.39,
+              "match_percentage": 39,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.386,
+              "match_percentage": 39,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.383,
+              "match_percentage": 38,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.5,
+          "genre_consistency": 0.75,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 597,
+          "source_title": "Titanic",
+          "category": "Tình cảm / Thảm họa",
+          "recs": [
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.287,
+              "match_percentage": 29,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.238,
+              "match_percentage": 24,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 244786,
+              "title": "Whiplash",
+              "similarity": 0.193,
+              "match_percentage": 19,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Music"
+              ]
+            },
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.185,
+              "match_percentage": 18,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.104,
+              "match_percentage": 15,
+              "reason": "Cùng đạo diễn: James Cameron",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 862,
+              "title": "Toy Story",
+              "similarity": 0.089,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Animation",
+                "Adventure",
+                "Family",
+                "Comedy"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.0,
+          "genre_consistency": 0.186,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 862,
+          "source_title": "Toy Story",
+          "category": "Hoạt hình / Gia đình",
+          "recs": [
+            {
+              "id": 12,
+              "title": "Finding Nemo",
+              "similarity": 0.271,
+              "match_percentage": 27,
+              "reason": "Thể loại: Animation, Family",
+              "genres": [
+                "Animation",
+                "Family"
+              ]
+            },
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.246,
+              "match_percentage": 25,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.233,
+              "match_percentage": 23,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.231,
+              "match_percentage": 23,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.209,
+              "match_percentage": 21,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.205,
+              "match_percentage": 20,
+              "reason": "Thể loại: Adventure",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.167,
+          "genre_consistency": 0.218,
+          "diversity": 0.833
+        },
+        {
+          "source_id": 244786,
+          "source_title": "Whiplash",
+          "category": "Âm nhạc / Tâm lý",
+          "recs": [
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.258,
+              "match_percentage": 26,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            },
+            {
+              "id": 597,
+              "title": "Titanic",
+              "similarity": 0.199,
+              "match_percentage": 20,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Romance"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.174,
+              "match_percentage": 17,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.148,
+              "match_percentage": 15,
+              "reason": "Thể loại: Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.074,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 138843,
+              "title": "The Conjuring",
+              "similarity": 0.061,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Horror",
+                "Thriller"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.0,
+          "genre_consistency": 0.186,
+          "diversity": 0.667
+        },
+        {
+          "source_id": 138843,
+          "source_title": "The Conjuring",
+          "category": "Kinh dị / Siêu nhiên",
+          "recs": [
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.293,
+              "match_percentage": 29,
+              "reason": "Thể loại: Thriller",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            },
+            {
+              "id": 157336,
+              "title": "Interstellar",
+              "similarity": 0.099,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Adventure",
+                "Drama",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.092,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.092,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.088,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 278,
+              "title": "The Shawshank Redemption",
+              "similarity": 0.085,
+              "match_percentage": 15,
+              "reason": "Cốt truyện và phong cách tương đồng sâu theo phân tích AI.",
+              "genres": [
+                "Drama",
+                "Crime"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.0,
+          "genre_consistency": 0.033,
+          "diversity": 0.667
+        },
+        {
+          "source_id": 299536,
+          "source_title": "Avengers: Infinity War",
+          "category": "Siêu anh hùng / Kỳ ảo",
+          "recs": [
+            {
+              "id": 11,
+              "title": "Star Wars",
+              "similarity": 0.424,
+              "match_percentage": 42,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.38,
+              "match_percentage": 38,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.38,
+              "match_percentage": 38,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        },
+        {
+          "source_id": 278,
+          "source_title": "The Shawshank Redemption",
+          "category": "Tâm lý / Tội phạm",
+          "recs": [
+            {
+              "id": 155,
+              "title": "The Dark Knight",
+              "similarity": 0.263,
+              "match_percentage": 26,
+              "reason": "Thể loại: Crime, Drama",
+              "genres": [
+                "Drama",
+                "Action",
+                "Crime",
+                "Thriller"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.167,
+          "genre_consistency": 0.5,
+          "diversity": 0.167
+        },
+        {
+          "source_id": 12,
+          "source_title": "Finding Nemo",
+          "category": "Hoạt hình / Phiêu lưu biển cả",
+          "recs": [
+            {
+              "id": 862,
+              "title": "Toy Story",
+              "similarity": 0.279,
+              "match_percentage": 28,
+              "reason": "Thể loại: Animation, Family",
+              "genres": [
+                "Animation",
+                "Adventure",
+                "Family",
+                "Comedy"
+              ]
+            }
+          ],
+          "ndcg": 1.0,
+          "precision": 0.167,
+          "genre_consistency": 0.5,
+          "diversity": 0.167
+        },
+        {
+          "source_id": 11,
+          "source_title": "Star Wars",
+          "category": "Sử thi vũ trụ / Phiêu lưu",
+          "recs": [
+            {
+              "id": 299536,
+              "title": "Avengers: Infinity War",
+              "similarity": 0.43,
+              "match_percentage": 43,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Adventure",
+                "Action",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 19995,
+              "title": "Avatar",
+              "similarity": 0.375,
+              "match_percentage": 37,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Adventure",
+                "Fantasy",
+                "Science Fiction"
+              ]
+            },
+            {
+              "id": 27205,
+              "title": "Inception",
+              "similarity": 0.342,
+              "match_percentage": 34,
+              "reason": "Thể loại: Action, Adventure, Science Fiction",
+              "genres": [
+                "Action",
+                "Science Fiction",
+                "Adventure"
+              ]
+            }
+          ],
+          "ndcg": 0.994,
+          "precision": 0.5,
+          "genre_consistency": 0.917,
+          "diversity": 0.5
+        }
+      ]
+    }
+  }
+}

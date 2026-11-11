@@ -1,0 +1,20 @@
+{% extends 'admin/base.html' %}
+{% block title %}Đăng nhập quản trị{% endblock %}
+{% block content %}
+<section class="login-shell">
+  <div class="login-card">
+    <div class="eyebrow">CINEMATCH STUDIO</div>
+    <h1>Quản lý thư viện riêng</h1>
+    <p>Đăng phim ngắn AI và các phim mới chưa xuất hiện trên TMDB.</p>
+    {% if database_error %}
+      <div class="notice notice--error"><strong>Chưa kết nối được MySQL</strong><br>{{ database_error }}</div>
+    {% endif %}
+    <form method="post" class="stack">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label>Tên đăng nhập<input name="username" autocomplete="username" required {% if database_error %}disabled{% endif %}></label>
+      <label>Mật khẩu<input type="password" name="password" autocomplete="current-password" required {% if database_error %}disabled{% endif %}></label>
+      <button class="button button--primary" type="submit" {% if database_error %}disabled{% endif %}>Đăng nhập</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

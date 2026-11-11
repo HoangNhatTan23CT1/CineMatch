@@ -1,0 +1,34 @@
+{% extends 'admin/base.html' %}
+{% block title %}Thư viện phim{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div><div class="eyebrow">THƯ VIỆN NỘI BỘ</div><h1>Phim của CineMatch</h1><p>Nội dung xuất bản sẽ xuất hiện trên trang chủ và trong kết quả tìm kiếm, gợi ý AI.</p></div>
+  <a class="button button--primary" href="{{ url_for('admin.create_movie') }}">＋ Thêm phim mới</a>
+</div>
+<div class="stats-grid">
+  <article><span>Tổng số</span><strong>{{ stats.total }}</strong></article>
+  <article><span>Đang xuất bản</span><strong>{{ stats.published }}</strong></article>
+  <article><span>Bản nháp</span><strong>{{ stats.drafts }}</strong></article>
+  <article><span>Phim AI</span><strong>{{ stats.ai }}</strong></article>
+</div>
+<section class="panel">
+  {% if movies %}
+  <div class="table-wrap"><table>
+    <thead><tr><th>Phim</th><th>Loại</th><th>Ngày phát hành</th><th>Trạng thái</th><th></th></tr></thead>
+    <tbody>
+    {% for movie in movies %}
+      <tr>
+        <td><div class="movie-cell">{% if movie.poster_url %}<img src="{{ movie.poster_url }}" alt="">{% else %}<div class="poster-placeholder">✦</div>{% endif %}<div><strong>{{ movie.title }}</strong><small>{{ movie.genres|join(' · ') or 'Chưa phân loại' }}</small></div></div></td>
+        <td>{% if movie.is_ai_generated %}<span class="tag tag--ai">AI Short</span>{% else %}<span class="tag">Phim mới</span>{% endif %}</td>
+        <td>{{ movie.release_date or '—' }}</td>
+        <td>{% if movie.is_published %}<span class="status status--live">Đang hiển thị</span>{% else %}<span class="status">Bản nháp</span>{% endif %}</td>
+        <td><div class="actions"><a class="button button--ghost" href="{{ url_for('admin.edit_movie', movie_id=movie.custom_movie_id) }}">Sửa</a><form method="post" action="{{ url_for('admin.toggle_publish', movie_id=movie.custom_movie_id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="published" value="{{ 0 if movie.is_published else 1 }}"><button class="button button--ghost" type="submit">{{ 'Ẩn' if movie.is_published else 'Xuất bản' }}</button></form></div></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  {% else %}
+  <div class="empty"><span>✦</span><h2>Chưa có phim nội bộ</h2><p>Thêm phim ngắn AI đầu tiên hoặc một phim TMDB chưa cập nhật.</p><a class="button button--primary" href="{{ url_for('admin.create_movie') }}">Thêm phim</a></div>
+  {% endif %}
+</section>
+{% endblock %}

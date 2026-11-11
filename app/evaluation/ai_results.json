@@ -1,0 +1,958 @@
+{
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "fingerprint": "1ac39e892a2d60235ddcbc24b987d3d32a41c8f2d8db252f0994f498c35e0d09",
+  "note": "Chưa chấm độ phù hợp. Thời gian đo trên máy hiện tại sau khi đã nạp mô hình.",
+  "queries": [
+    {
+      "query": "phim về người mắc kẹt ngoài không gian",
+      "seconds": 0.391,
+      "results": [
+        {
+          "id": 16911,
+          "title": "The Inhabited Island",
+          "score": 0.632
+        },
+        {
+          "id": 4547,
+          "title": "Panic Room",
+          "score": 0.63
+        },
+        {
+          "id": 12088,
+          "title": "Fortress",
+          "score": 0.619
+        },
+        {
+          "id": 431,
+          "title": "Cube",
+          "score": 0.597
+        },
+        {
+          "id": 19933,
+          "title": "The Brave Little Toaster",
+          "score": 0.587
+        },
+        {
+          "id": 7191,
+          "title": "Cloverfield",
+          "score": 0.586
+        }
+      ]
+    },
+    {
+      "query": "phim về du hành thời gian",
+      "seconds": 0.362,
+      "results": [
+        {
+          "id": 59967,
+          "title": "Looper",
+          "score": 0.619
+        },
+        {
+          "id": 14139,
+          "title": "Timecrimes",
+          "score": 0.583
+        },
+        {
+          "id": 227719,
+          "title": "Project Almanac",
+          "score": 0.578
+        },
+        {
+          "id": 45767,
+          "title": "Time Changer",
+          "score": 0.569
+        },
+        {
+          "id": 243938,
+          "title": "Hot Tub Time Machine 2",
+          "score": 0.55
+        },
+        {
+          "id": 11687,
+          "title": "The Visitors",
+          "score": 0.549
+        }
+      ]
+    },
+    {
+      "query": "phim về tình yêu trên một con tàu bị chìm",
+      "seconds": 0.366,
+      "results": [
+        {
+          "id": 211557,
+          "title": "Vessel",
+          "score": 0.663
+        },
+        {
+          "id": 503,
+          "title": "Poseidon",
+          "score": 0.656
+        },
+        {
+          "id": 26466,
+          "title": "Triangle",
+          "score": 0.651
+        },
+        {
+          "id": 356987,
+          "title": "Abandoned",
+          "score": 0.611
+        },
+        {
+          "id": 12779,
+          "title": "Swept Away",
+          "score": 0.599
+        },
+        {
+          "id": 79698,
+          "title": "The Lovers",
+          "score": 0.598
+        }
+      ]
+    },
+    {
+      "query": "phim hoạt hình về những món đồ chơi biết nói",
+      "seconds": 0.355,
+      "results": [
+        {
+          "id": 137106,
+          "title": "The Lego Movie",
+          "score": 0.588
+        },
+        {
+          "id": 15173,
+          "title": "Jonah: A VeggieTales Movie",
+          "score": 0.583
+        },
+        {
+          "id": 251471,
+          "title": "A LEGO Brickumentary",
+          "score": 0.582
+        },
+        {
+          "id": 10193,
+          "title": "Toy Story 3",
+          "score": 0.578
+        },
+        {
+          "id": 10137,
+          "title": "Stuart Little",
+          "score": 0.575
+        },
+        {
+          "id": 927,
+          "title": "Gremlins",
+          "score": 0.562
+        }
+      ]
+    },
+    {
+      "query": "phim về một gia đình sống trong ngôi nhà bị ma ám",
+      "seconds": 0.365,
+      "results": [
+        {
+          "id": 283445,
+          "title": "Sinister 2",
+          "score": 0.692
+        },
+        {
+          "id": 10065,
+          "title": "The Amityville Horror",
+          "score": 0.65
+        },
+        {
+          "id": 49018,
+          "title": "Insidious",
+          "score": 0.643
+        },
+        {
+          "id": 11056,
+          "title": "Darkness",
+          "score": 0.638
+        },
+        {
+          "id": 82507,
+          "title": "Sinister",
+          "score": 0.637
+        },
+        {
+          "id": 18292,
+          "title": "George Washington",
+          "score": 0.635
+        }
+      ]
+    },
+    {
+      "query": "phim về siêu anh hùng bảo vệ thành phố",
+      "seconds": 0.357,
+      "results": [
+        {
+          "id": 209112,
+          "title": "Batman v Superman: Dawn of Justice",
+          "score": 0.745
+        },
+        {
+          "id": 8850,
+          "title": "The Shadow",
+          "score": 0.705
+        },
+        {
+          "id": 38055,
+          "title": "Megamind",
+          "score": 0.656
+        },
+        {
+          "id": 86304,
+          "title": "All Superheroes Must Die",
+          "score": 0.648
+        },
+        {
+          "id": 268,
+          "title": "Batman",
+          "score": 0.648
+        },
+        {
+          "id": 34769,
+          "title": "Defendor",
+          "score": 0.645
+        }
+      ]
+    },
+    {
+      "query": "phim về một vụ cướp ngân hàng",
+      "seconds": 0.374,
+      "results": [
+        {
+          "id": 9277,
+          "title": "The Sting",
+          "score": 0.629
+        },
+        {
+          "id": 10167,
+          "title": "Half Past Dead",
+          "score": 0.616
+        },
+        {
+          "id": 22600,
+          "title": "Gangster's Paradise: Jerusalema",
+          "score": 0.611
+        },
+        {
+          "id": 8744,
+          "title": "Albino Alligator",
+          "score": 0.603
+        },
+        {
+          "id": 66,
+          "title": "Absolute Power",
+          "score": 0.597
+        },
+        {
+          "id": 10569,
+          "title": "Small Time Crooks",
+          "score": 0.597
+        }
+      ]
+    },
+    {
+      "query": "phim về điệp viên thực hiện nhiệm vụ bí mật",
+      "seconds": 0.356,
+      "results": [
+        {
+          "id": 257088,
+          "title": "Point Break",
+          "score": 0.722
+        },
+        {
+          "id": 11665,
+          "title": "Get Smart",
+          "score": 0.7
+        },
+        {
+          "id": 26486,
+          "title": "The Last Shot",
+          "score": 0.689
+        },
+        {
+          "id": 75656,
+          "title": "Now You See Me",
+          "score": 0.683
+        },
+        {
+          "id": 179,
+          "title": "The Interpreter",
+          "score": 0.672
+        },
+        {
+          "id": 10167,
+          "title": "Half Past Dead",
+          "score": 0.67
+        }
+      ]
+    },
+    {
+      "query": "phim về người sống sót trong đại dịch zombie",
+      "seconds": 0.354,
+      "results": [
+        {
+          "id": 924,
+          "title": "Dawn of the Dead",
+          "score": 0.865
+        },
+        {
+          "id": 10331,
+          "title": "Night of the Living Dead",
+          "score": 0.782
+        },
+        {
+          "id": 312793,
+          "title": "The Walking Deceased",
+          "score": 0.762
+        },
+        {
+          "id": 13025,
+          "title": "Diary of the Dead",
+          "score": 0.761
+        },
+        {
+          "id": 29426,
+          "title": "Survival of the Dead",
+          "score": 0.752
+        },
+        {
+          "id": 8408,
+          "title": "Day of the Dead",
+          "score": 0.724
+        }
+      ]
+    },
+    {
+      "query": "phim về một tay trống trẻ theo đuổi ước mơ âm nhạc",
+      "seconds": 0.344,
+      "results": [
+        {
+          "id": 13497,
+          "title": "Drumline",
+          "score": 0.65
+        },
+        {
+          "id": 244786,
+          "title": "Whiplash",
+          "score": 0.606
+        },
+        {
+          "id": 50359,
+          "title": "Hop",
+          "score": 0.575
+        },
+        {
+          "id": 244403,
+          "title": "Rudderless",
+          "score": 0.537
+        },
+        {
+          "id": 423,
+          "title": "The Pianist",
+          "score": 0.517
+        },
+        {
+          "id": 209451,
+          "title": "Jersey Boys",
+          "score": 0.516
+        }
+      ]
+    },
+    {
+      "query": "phim tài liệu về chim cánh cụt ở Nam Cực",
+      "seconds": 0.359,
+      "results": [
+        {
+          "id": 12486,
+          "title": "Farce of the Penguins",
+          "score": 0.663
+        },
+        {
+          "id": 1667,
+          "title": "March of the Penguins",
+          "score": 0.654
+        },
+        {
+          "id": 57612,
+          "title": "Dolphins and Whales: Tribes of the Ocean",
+          "score": 0.618
+        },
+        {
+          "id": 36970,
+          "title": "Oceans",
+          "score": 0.577
+        },
+        {
+          "id": 17043,
+          "title": "The Crocodile Hunter: Collision Course",
+          "score": 0.55
+        },
+        {
+          "id": 78698,
+          "title": "Big Miracle",
+          "score": 0.55
+        }
+      ]
+    },
+    {
+      "query": "phim về mafia và gia đình tội phạm",
+      "seconds": 0.346,
+      "results": [
+        {
+          "id": 22600,
+          "title": "Gangster's Paradise: Jerusalema",
+          "score": 0.671
+        },
+        {
+          "id": 10167,
+          "title": "Half Past Dead",
+          "score": 0.651
+        },
+        {
+          "id": 8744,
+          "title": "Albino Alligator",
+          "score": 0.645
+        },
+        {
+          "id": 9366,
+          "title": "Donnie Brasco",
+          "score": 0.643
+        },
+        {
+          "id": 400,
+          "title": "Things to Do in Denver When You're Dead",
+          "score": 0.63
+        },
+        {
+          "id": 67373,
+          "title": "This Thing of Ours",
+          "score": 0.617
+        }
+      ]
+    },
+    {
+      "query": "phim hài về nhóm bạn đi du lịch",
+      "seconds": 0.348,
+      "results": [
+        {
+          "id": 357441,
+          "title": "Karachi se Lahore",
+          "score": 0.633
+        },
+        {
+          "id": 9285,
+          "title": "Road Trip",
+          "score": 0.61
+        },
+        {
+          "id": 40807,
+          "title": "50/50",
+          "score": 0.591
+        },
+        {
+          "id": 33676,
+          "title": "Losin' It",
+          "score": 0.59
+        },
+        {
+          "id": 10073,
+          "title": "Date Movie",
+          "score": 0.59
+        },
+        {
+          "id": 22597,
+          "title": "The Broken Hearts Club: A Romantic Comedy",
+          "score": 0.582
+        }
+      ]
+    },
+    {
+      "query": "phim về con người chiến đấu với người ngoài hành tinh",
+      "seconds": 0.382,
+      "results": [
+        {
+          "id": 11260,
+          "title": "Meet Dave",
+          "score": 0.688
+        },
+        {
+          "id": 146631,
+          "title": "U.F.O.",
+          "score": 0.687
+        },
+        {
+          "id": 205126,
+          "title": "Independence Daysaster",
+          "score": 0.625
+        },
+        {
+          "id": 926,
+          "title": "Galaxy Quest",
+          "score": 0.618
+        },
+        {
+          "id": 192577,
+          "title": "Space Pirate Captain Harlock",
+          "score": 0.618
+        },
+        {
+          "id": 59678,
+          "title": "Attack the Block",
+          "score": 0.616
+        }
+      ]
+    },
+    {
+      "query": "phim về cuộc phiêu lưu trong thế giới phép thuật",
+      "seconds": 0.378,
+      "results": [
+        {
+          "id": 1124,
+          "title": "The Prestige",
+          "score": 0.644
+        },
+        {
+          "id": 224141,
+          "title": "Into the Woods",
+          "score": 0.634
+        },
+        {
+          "id": 152599,
+          "title": "The Immigrant",
+          "score": 0.621
+        },
+        {
+          "id": 10140,
+          "title": "The Chronicles of Narnia: The Voyage of the Dawn Treader",
+          "score": 0.618
+        },
+        {
+          "id": 2270,
+          "title": "Stardust",
+          "score": 0.611
+        },
+        {
+          "id": 848,
+          "title": "Dragonslayer",
+          "score": 0.601
+        }
+      ]
+    },
+    {
+      "query": "phim về người bị bỏ lại trên hoang đảo",
+      "seconds": 0.363,
+      "results": [
+        {
+          "id": 36970,
+          "title": "Oceans",
+          "score": 0.622
+        },
+        {
+          "id": 246449,
+          "title": "Against the Wild",
+          "score": 0.612
+        },
+        {
+          "id": 14324,
+          "title": "Virgin Territory",
+          "score": 0.589
+        },
+        {
+          "id": 57120,
+          "title": "Meek's Cutoff",
+          "score": 0.585
+        },
+        {
+          "id": 9792,
+          "title": "The Hills Have Eyes",
+          "score": 0.583
+        },
+        {
+          "id": 13889,
+          "title": "Madadayo",
+          "score": 0.575
+        }
+      ]
+    },
+    {
+      "query": "phim về võ sĩ luyện tập để thi đấu quyền anh",
+      "seconds": 0.379,
+      "results": [
+        {
+          "id": 70006,
+          "title": "Never Back Down 2: The Beatdown",
+          "score": 0.635
+        },
+        {
+          "id": 45317,
+          "title": "The Fighter",
+          "score": 0.589
+        },
+        {
+          "id": 11891,
+          "title": "Kung Pow: Enter the Fist",
+          "score": 0.572
+        },
+        {
+          "id": 290864,
+          "title": "Kung Fu Jungle",
+          "score": 0.555
+        },
+        {
+          "id": 11667,
+          "title": "Street Fighter",
+          "score": 0.551
+        },
+        {
+          "id": 47534,
+          "title": "Fighting Tommy Riley",
+          "score": 0.546
+        }
+      ]
+    },
+    {
+      "query": "phim về học sinh trung học và tình bạn",
+      "seconds": 0.368,
+      "results": [
+        {
+          "id": 76996,
+          "title": "Love and Other Catastrophes",
+          "score": 0.631
+        },
+        {
+          "id": 157386,
+          "title": "The Spectacular Now",
+          "score": 0.602
+        },
+        {
+          "id": 3597,
+          "title": "I Know What You Did Last Summer",
+          "score": 0.587
+        },
+        {
+          "id": 159770,
+          "title": "The Dirties",
+          "score": 0.578
+        },
+        {
+          "id": 14275,
+          "title": "Hoop Dreams",
+          "score": 0.576
+        },
+        {
+          "id": 19153,
+          "title": "The Real Cancun",
+          "score": 0.573
+        }
+      ]
+    },
+    {
+      "query": "phim về cuộc vượt ngục",
+      "seconds": 0.345,
+      "results": [
+        {
+          "id": 123678,
+          "title": "The Act of Killing",
+          "score": 0.692
+        },
+        {
+          "id": 13805,
+          "title": "Disaster Movie",
+          "score": 0.687
+        },
+        {
+          "id": 11308,
+          "title": "The Hotel New Hampshire",
+          "score": 0.683
+        },
+        {
+          "id": 146203,
+          "title": "The Last Exorcism Part II",
+          "score": 0.654
+        },
+        {
+          "id": 4248,
+          "title": "Scary Movie 2",
+          "score": 0.651
+        },
+        {
+          "id": 6968,
+          "title": "The Baader Meinhof Complex",
+          "score": 0.648
+        }
+      ]
+    },
+    {
+      "query": "phim về thám tử điều tra kẻ giết người hàng loạt",
+      "seconds": 0.368,
+      "results": [
+        {
+          "id": 123678,
+          "title": "The Act of Killing",
+          "score": 0.795
+        },
+        {
+          "id": 807,
+          "title": "Se7en",
+          "score": 0.744
+        },
+        {
+          "id": 254024,
+          "title": "The Face of an Angel",
+          "score": 0.717
+        },
+        {
+          "id": 4234,
+          "title": "Scream 3",
+          "score": 0.713
+        },
+        {
+          "id": 8080,
+          "title": "Suspect Zero",
+          "score": 0.713
+        },
+        {
+          "id": 11892,
+          "title": "Murder by Numbers",
+          "score": 0.697
+        }
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "title": "Avatar",
+      "tfidf": [
+        "Aliens",
+        "Battle: Los Angeles",
+        "Falcon Rising",
+        "Apollo 18",
+        "Star Trek Into Darkness",
+        "Titan A.E."
+      ],
+      "ai": [
+        "Meet Dave",
+        "Aliens",
+        "Star Trek Beyond",
+        "Star Trek: Insurrection",
+        "Serenity",
+        "Krull"
+      ]
+    },
+    {
+      "title": "Titanic",
+      "tfidf": [
+        "Raise the Titanic",
+        "Ghost Ship",
+        "Poseidon",
+        "Pirates of the Caribbean: On Stranger Tides",
+        "In the Heart of the Sea",
+        "Supernova"
+      ],
+      "ai": [
+        "Message in a Bottle",
+        "The Chambermaid on the Titanic",
+        "Cargo",
+        "Vessel",
+        "Lake Mungo",
+        "Donovan's Reef"
+      ]
+    },
+    {
+      "title": "Toy Story",
+      "tfidf": [
+        "Toy Story 3",
+        "Toy Story 2",
+        "The 40 Year Old Virgin",
+        "For Your Consideration",
+        "Factory Girl",
+        "Heartbeeps"
+      ],
+      "ai": [
+        "Toy Story 3",
+        "Toy Story 2",
+        "The 40 Year Old Virgin",
+        "A Christmas Story",
+        "Real Steel",
+        "A.I. Artificial Intelligence"
+      ]
+    },
+    {
+      "title": "The Dark Knight",
+      "tfidf": [
+        "The Dark Knight Rises",
+        "Batman Returns",
+        "Batman Begins",
+        "Batman: The Dark Knight Returns, Part 2",
+        "Batman Forever",
+        "Batman"
+      ],
+      "ai": [
+        "The Dark Knight Rises",
+        "Batman Returns",
+        "Batman v Superman: Dawn of Justice",
+        "Batman & Robin",
+        "Batman: The Dark Knight Returns, Part 2",
+        "Batman"
+      ]
+    },
+    {
+      "title": "The Conjuring",
+      "tfidf": [
+        "The Conjuring 2",
+        "Insidious: Chapter 2",
+        "The Apparition",
+        "Grave Encounters",
+        "Insidious",
+        "Ouija"
+      ],
+      "ai": [
+        "The Conjuring 2",
+        "The Amityville Horror",
+        "Insidious: Chapter 2",
+        "Sinister",
+        "Ghostbusters",
+        "Paranormal Activity 3"
+      ]
+    },
+    {
+      "title": "The Hangover",
+      "tfidf": [
+        "The Hangover Part II",
+        "Last Vegas",
+        "Very Bad Things",
+        "Multiplicity",
+        "Welcome to the Rileys",
+        "Three Men and a Baby"
+      ],
+      "ai": [
+        "Old School",
+        "Coffee Town",
+        "Slackers",
+        "Three Men and a Baby",
+        "Jeff, Who Lives at Home",
+        "Home Alone"
+      ]
+    },
+    {
+      "title": "The Godfather",
+      "tfidf": [
+        "The Godfather: Part II",
+        "The Godfather: Part III",
+        "Blood Ties",
+        "This Thing of Ours",
+        "Mickey Blue Eyes",
+        "Summer of Sam"
+      ],
+      "ai": [
+        "The Godfather: Part II",
+        "The Godfather: Part III",
+        "The Conformist",
+        "Hannibal Rising",
+        "The Funeral",
+        "Find Me Guilty"
+      ]
+    },
+    {
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "tfidf": [
+        "The Hobbit: An Unexpected Journey",
+        "The Hobbit: The Desolation of Smaug",
+        "The Lord of the Rings: The Two Towers",
+        "The Hobbit: The Battle of the Five Armies",
+        "The Lord of the Rings: The Return of the King",
+        "The Addams Family"
+      ],
+      "ai": [
+        "The Hobbit: An Unexpected Journey",
+        "The Hobbit: The Desolation of Smaug",
+        "The Lord of the Rings: The Two Towers",
+        "The Hobbit: The Battle of the Five Armies",
+        "The Lord of the Rings: The Return of the King",
+        "Little Nicky"
+      ]
+    },
+    {
+      "title": "Whiplash",
+      "tfidf": [
+        "Drumline",
+        "Hop",
+        "Match Point",
+        "The Rocker",
+        "Spawn",
+        "Kung Fu Jungle"
+      ],
+      "ai": [
+        "Drumline",
+        "The Outsiders",
+        "Shine",
+        "Idlewild",
+        "Green Room",
+        "The Chorus"
+      ]
+    },
+    {
+      "title": "Schindler's List",
+      "tfidf": [
+        "Woman in Gold",
+        "Saints and Soldiers",
+        "The Great Escape",
+        "Inglourious Basterds",
+        "U-571",
+        "Red Tails"
+      ],
+      "ai": [
+        "Valkyrie",
+        "Woman in Gold",
+        "The Great Escape",
+        "Jakob the Liar",
+        "Dead Snow",
+        "Hannibal Rising"
+      ]
+    },
+    {
+      "title": "March of the Penguins",
+      "tfidf": [
+        "Farce of the Penguins",
+        "Happy Feet",
+        "Happy Feet Two",
+        "Madagascar: Escape 2 Africa",
+        "Last Vegas",
+        "Antarctic Edge: 70° South"
+      ],
+      "ai": [
+        "Farce of the Penguins",
+        "Madagascar 3: Europe's Most Wanted",
+        "Happy Feet",
+        "Happy Feet Two",
+        "Antarctic Edge: 70° South",
+        "The Thing"
+      ]
+    },
+    {
+      "title": "The Good, the Bad and the Ugly",
+      "tfidf": [
+        "A Fistful of Dollars",
+        "Once Upon a Time in the West",
+        "One Man's Hero",
+        "Three Kings",
+        "Paint Your Wagon",
+        "White Fang"
+      ],
+      "ai": [
+        "The Legend of Hell's Gate: An American Conspiracy",
+        "National Treasure",
+        "O Brother, Where Art Thou?",
+        "A Fistful of Dollars",
+        "Broken Horses",
+        "Django Unchained"
+      ]
+    }
+  ]
+}

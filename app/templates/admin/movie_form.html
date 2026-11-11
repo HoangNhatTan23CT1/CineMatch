@@ -1,0 +1,37 @@
+{% extends 'admin/base.html' %}
+{% block title %}{{ 'Sửa phim' if movie else 'Thêm phim' }}{% endblock %}
+{% block content %}
+{% set data = form_data if form_data else movie %}
+<div class="page-heading"><div><div class="eyebrow">BIÊN TẬP NỘI DUNG</div><h1>{{ 'Sửa ' ~ movie.title if movie else 'Thêm phim mới' }}</h1><p>Các trường mô tả, thể loại và từ khóa được dùng trực tiếp cho hệ thống gợi ý AI.</p></div><a class="button button--ghost" href="{{ url_for('admin.dashboard') }}">← Quay lại</a></div>
+<form method="post" class="editor-grid">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <section class="panel form-section">
+    <h2>Thông tin chính</h2>
+    <div class="field-grid field-grid--2">
+      <label>Tên phim *<input name="title" value="{{ data.get('title','') if data else '' }}" required maxlength="255"></label>
+      <label>Tên gốc<input name="original_title" value="{{ data.get('original_title','') if data else '' }}" maxlength="255"></label>
+    </div>
+    <label>Tóm tắt nội dung *<textarea name="overview" rows="7" required>{{ data.get('overview','') if data else '' }}</textarea></label>
+    <div class="field-grid field-grid--3">
+      <label>Ngày phát hành<input type="date" name="release_date" value="{{ data.get('release_date','') if data else '' }}"></label>
+      <label>Thời lượng (phút)<input type="number" name="runtime" min="1" max="1000" value="{{ data.get('runtime','') if data else '' }}"></label>
+      <label>Ngôn ngữ<input name="original_language" value="{{ data.get('original_language','vi') if data else 'vi' }}" maxlength="12"></label>
+    </div>
+    <div class="field-grid field-grid--2">
+      <label>Thể loại <small>ngăn cách bằng dấu phẩy</small><input name="genres" value="{{ data.get('genres','') if form_data else (data.get('genres',[])|join(', ') if data else '') }}" placeholder="Drama, Science Fiction"></label>
+      <label>Từ khóa <small>ngăn cách bằng dấu phẩy</small><input name="keywords" value="{{ data.get('keywords','') if form_data else (data.get('keywords',[])|join(', ') if data else '') }}" placeholder="AI, robot, tương lai"></label>
+    </div>
+    <div class="field-grid field-grid--2">
+      <label>Đạo diễn<input name="director" value="{{ data.get('director','') if data else '' }}"></label>
+      <label>Diễn viên <small>ngăn cách bằng dấu phẩy</small><input name="cast" value="{{ data.get('cast','') if form_data else (data.get('cast',[])|join(', ') if data else '') }}"></label>
+    </div>
+  </section>
+  <aside class="stack">
+    <section class="panel form-section"><h2>Hình ảnh & video</h2><label>Poster URL<input type="url" name="poster_url" value="{{ data.get('poster_url','') if data else '' }}" placeholder="https://..."></label><label>Backdrop URL<input type="url" name="backdrop_url" value="{{ data.get('backdrop_url','') if data else '' }}" placeholder="https://..."></label><label>Trailer / phim URL<input type="url" name="trailer_url" value="{{ data.get('trailer_url','') if data else '' }}" placeholder="https://..."></label><label>Trang nguồn<input type="url" name="source_url" value="{{ data.get('source_url','') if data else '' }}" placeholder="https://..."></label><div class="field-grid field-grid--2"><label>Nền tảng<input name="platform" value="{{ data.get('platform','') if data else '' }}" placeholder="YouTube"></label><label>Công cụ AI<input name="ai_tool" value="{{ data.get('ai_tool','') if data else '' }}" placeholder="Veo, Runway..."></label></div></section>
+    <section class="panel form-section"><h2>Phân loại</h2><label>Nhãn nguồn<input name="source_label" value="{{ data.get('source_label','CineMatch Exclusive') if data else 'CineMatch Exclusive' }}"></label><div class="field-grid field-grid--2"><label>Điểm<input type="number" step="0.1" min="0" max="10" name="vote_average" value="{{ data.get('vote_average',0) if data else 0 }}"></label><label>Lượt đánh giá<input type="number" min="0" name="vote_count" value="{{ data.get('vote_count',0) if data else 0 }}"></label></div><label class="check"><input type="checkbox" name="is_ai_generated" value="1" {% if data and data.get('is_ai_generated') %}checked{% endif %}> Đây là phim ngắn được tạo bằng AI</label><label class="check"><input type="checkbox" name="is_published" value="1" {% if not data or data.get('is_published') %}checked{% endif %}> Xuất bản ngay</label></section>
+    <button class="button button--primary button--wide" type="submit">Lưu phim</button>
+    {% if movie %}<a class="button button--ghost button--wide" href="{{ url_for('detail', movie_id=movie.id) }}" target="_blank">Xem trên trang phim ↗</a>{% endif %}
+  </aside>
+</form>
+{% if movie %}<section class="danger-zone"><div><strong>Xóa phim</strong><p>Thao tác này xóa vĩnh viễn bản ghi khỏi thư viện nội bộ.</p></div><form method="post" action="{{ url_for('admin.delete_movie', movie_id=movie.custom_movie_id) }}" onsubmit="return confirm('Xóa vĩnh viễn phim này?')"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button button--danger" type="submit">Xóa phim</button></form></section>{% endif %}
+{% endblock %}
